@@ -4,14 +4,18 @@ $language = $_SESSION['language'];
 
 if (!empty($_POST)) {
     try {
-        $user = new User();
-        $user->setLanguage($language);
-        $user->setUsername($_POST['username']);
-        $user->setEmail($_POST['email']);
-        $user->setPassword($_POST['password']);
-        $user->save();
-    
-        header("Location: home.php");
+        if (!empty($_POST['terms'])) {
+            $user = new User();
+            $user->setLanguage($language);
+            $user->setUsername($_POST['username']);
+            $user->setEmail($_POST['email']);
+            $user->setPassword($_POST['password']);
+            $user->save();
+        
+            header("Location: home.php");
+        } else {
+            throw new Exception("Je moet de gebruikersvoorwaarden accepteren.");
+        }
     } catch (Throwable $e) {
         $error = $e->getMessage();
     }
@@ -73,6 +77,10 @@ if (!empty($_POST)) {
                 </div>
                 <div class="mt-[32px]">
                     <input type="password" placeholder="Wachtwoord" name="password" class="pl-[32px] font-bold w-full text-black h-[48px] rounded-[5px] text-[16px]">
+                </div>
+                <div>
+                    <input type="checkbox" name="terms" value="terms" class="w-4 h-4 relative top-1">
+                    <label for="terms" class="text-xs">Ik ga akkoord met de gebruikersvoorwaarden en privacy wetten</label>
                 </div>
             </div>
             <!-- If there is an error, show it -->
