@@ -1,5 +1,6 @@
 <?php
-class User {
+class User
+{
     private int $id;
     private string $language;
     private string $username;
@@ -9,7 +10,7 @@ class User {
 
     /**
      * Get the value of language
-     */ 
+     */
     public function getLanguage()
     {
         return $this->language;
@@ -19,7 +20,7 @@ class User {
      * Set the value of language
      *
      * @return  self
-     */ 
+     */
     public function setLanguage($language)
     {
         $this->language = $language;
@@ -29,7 +30,7 @@ class User {
 
     /**
      * Get the value of username
-     */ 
+     */
     public function getUsername()
     {
         return $this->username;
@@ -39,7 +40,7 @@ class User {
      * Set the value of username
      *
      * @return  self
-     */ 
+     */
     public function setUsername($username)
     {
         $this->username = $username;
@@ -49,7 +50,7 @@ class User {
 
     /**
      * Get the value of email
-     */ 
+     */
     public function getEmail()
     {
         return $this->email;
@@ -59,7 +60,7 @@ class User {
      * Set the value of email
      *
      * @return  self
-     */ 
+     */
     public function setEmail($email)
     {
         //validate email
@@ -70,12 +71,11 @@ class User {
         } else {
             throw new Exception("Sorry, dit is geen geldig emailadres.");
         }
-
     }
 
     /**
      * Get the value of password
-     */ 
+     */
     public function getPassword()
     {
         return $this->password;
@@ -85,7 +85,7 @@ class User {
      * Set the value of password
      *
      * @return  self
-     */ 
+     */
     public function setPassword($password)
     {
         //hash password with a factor of 12
@@ -95,7 +95,8 @@ class User {
         return $this;
     }
 
-    public function save(){
+    public function save()
+    {
         $conn = Db::getInstance();
         $statement = $conn->prepare("INSERT INTO users (language, username, email, password) values (:language, :username, :email, :password)");
         $statement->bindValue(":language", $this->getLanguage());
@@ -104,5 +105,45 @@ class User {
         $statement->bindValue(":password", $this->getPassword());
         $result = $statement->execute();
         return $result;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId($username)
+    {
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT id FROM users WHERE username = :username");
+        $statement->bindValue(":username", $username);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public function canLogin($username, $password)
+    {
+        try {
+            $conn = Db::getInstance();
+        } catch (Throwable $e) {
+            throw new Exception("connection failed.");
+        }
+        $statement = $conn->prepare("SELECT * FROM users WHERE username = :username");
+        $statement->bindValue(":username", $username);
+        $statement->execute();
+        $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+        //check if user exists, if not throw exception
+        if (!$user) {
+            throw new Exception("Incorrect username.");
+        }
+
+        $hash = $user['password'];
+
+        //check if password is correct, if not throw exception
+        if (password_verify($password, $hash)) {
+            return true;
+        } else {
+            throw new Exception("Incorrect password.");
+        }
     }
 }
