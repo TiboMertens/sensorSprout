@@ -55,21 +55,6 @@ if (!empty($_POST)) {
         margin: 0;
         padding: 0;
     }
-
-    input[type="radio"] {
-        appearance: none;
-        -webkit-appearance: none;
-        border-radius: 50%;
-        border: 0px solid #FFF;
-        background: #F5F3F3;
-        /* The outline will be the outer circle */
-        outline: 1px solid #81CCDE;
-    }
-
-    input[type="radio"]:checked {
-        border: 3px solid #FFF;
-        background: #81CCDE;
-    }
 </style>
 
 <body class="bg-[#F5F3F3] ml-auto mr-auto max-w-[500px]" style="height: 100%;">
