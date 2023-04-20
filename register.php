@@ -80,7 +80,7 @@ if (!empty($_POST)) {
                 <p class="text-red-500 text-xs italic"><?php echo $error; ?></p>
             <?php endif; ?>
             <div class="mt-[32px]">
-                <input type="submit" value="GA VERDER" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]">
+                <input type="submit" value="REGISTREER" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]">
             </div>
             <div class="flex justify-center items-center text-xs mt-[32px]">
                 <p class="text-center">Heeft u al een account? </br><a href="register.php" ><span class="underline font-bold hover:text-white">Log in</span></a></p>
