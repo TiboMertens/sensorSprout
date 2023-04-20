@@ -17,7 +17,7 @@ if (!empty($_POST)) {
             $_SESSION['loggedin'] = true;
             $_SESSION['id'] = $user->getId($username);
 
-            header("Location: index.php");
+            header("Location: home.php");
             return;
         }
     } catch (throwable $e) {
