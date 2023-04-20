@@ -1,10 +1,17 @@
 <?php
 include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
-if (!empty($_POST)) {
-    $user = new User();
-    $user->setLanguage($_POST['taal']);
-    header("Location: register.php");
+try {
+    if (!empty($_POST)) {
+        //add laguage to session
+        $_SESSION['language'] = $_POST['language'];
+        header("Location: register.php");
+    } else {
+        throw new Exception("No language selected");
+    }
+} catch (Throwable $e) {
+    $error = $e->getMessage();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,17 +76,21 @@ if (!empty($_POST)) {
             <form action="#" method="post">
                 <!-- 3 radio buttons with the values 'nederlands' 'français' 'deutsch' -->
                 <div class="flex items-center mt-[14px]">
-                    <input type="radio" id="nederlands" name="taal" class="h-4 w-4">
+                    <input type="radio" id="nederlands" name="language" value="nederlands" class="h-4 w-4">
                     <label for="nederlands" class="ml-2">Nederlands</label>
                 </div>
                 <div class="flex items-center mt-[14px]">
-                    <input type="radio" name="taal" value="français" id="français" class="h-4 w-4">
+                    <input type="radio" name="language" value="français" id="français" class="h-4 w-4">
                     <label for="français" class="ml-2">Français</label>
                 </div>
                 <div class="flex items-center mt-[14px]">
-                    <input type="radio" name="taal" value="deutsch" id="deutsch" class="h-4 w-4">
+                    <input type="radio" name="language" value="deutsch" id="deutsch" class="h-4 w-4">
                     <label for="deutsch" class="ml-2">Deutsch</label>
                 </div>
+                <!-- If there is an error, show it -->
+                <?php if (isset($error)) : ?>
+                            <p class="text-red-500 text-xs italic"><?php echo $error; ?></p>
+                        <?php endif; ?>
                 <div class="mr-[24px] mt-[32px]">
                     <input type="submit" value="GA VERDER" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] tracking-[2px]">
                 </div>
