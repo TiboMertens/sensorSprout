@@ -165,7 +165,7 @@ class User
 
     /**
      * Get the value of resetToken
-     */ 
+     */
     public function getResetToken()
     {
         return $this->resetToken;
@@ -175,7 +175,7 @@ class User
      * Set the value of resetToken
      *
      * @return  self
-     */ 
+     */
     public function setResetToken($resetToken)
     {
         $this->resetToken = $resetToken;
@@ -264,5 +264,30 @@ class User
         $statement->bindValue(":token", $this->resetToken);
         $result = $statement->execute();
         return $result;
+    }
+
+    public function getSensors()
+    {
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT sensors.name
+        FROM sensors
+        INNER JOIN sensor_user ON sensors.id = sensor_user.sensor_id
+        WHERE sensor_user.user_id = :id;");
+        $statement->bindValue(":id", $this->id);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 }
