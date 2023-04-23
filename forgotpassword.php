@@ -10,7 +10,6 @@ $key = $config[' keys ']['SENDGRID_API_KEY'];
 if (!empty($_POST)) {
     $email = $_POST['email'];
     $user = new User();
-    var_dump("gelukt");
     try {
         $correctEmail = $user->checkEmail($email);
         if ($correctEmail == true) {
