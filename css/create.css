@@ -1,0 +1,50 @@
+html {
+    height: 100%;
+    /* Fallback CSS for IE 4-6 and older browsers. Note: Without this setting, body below cannot achieve 100% height. */
+    height: 100vh;
+    /* Overrides 100% height in modern HTML5 browsers and uses the viewport's height. Only works in modern HTML5 browsers */
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    height: auto;
+    /* Allows content to grow beyond the page without overflow */
+    width: 500px;
+    /* Allows content to grow beyond the page without overflow */
+    min-height: 100%;
+    /* Starts web page with 100% height. Fallback for IE 4-6 and older browsers */
+    min-height: 100vh;
+    /* Starts web page with 100% height. Uses the viewport's height. Only works in modern HTML5 browsers */
+    overflow-y: scroll;
+    /* Optional: Adds an empty scrollbar to the right margin in case content grows vertically, creating a scrollbar.  Allows for better width calculations, as the browser pre-calculates width before scrollbar appears, avoiding page content shifting.*/
+    margin: 0;
+    padding: 0;
+}
+
+/* Hide horizontal scrollbar for WebKit-based browsers */
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+    width: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}
+
+#container2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
