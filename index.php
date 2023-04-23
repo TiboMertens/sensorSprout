@@ -1,12 +1,14 @@
 <?php
 include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 try {
-    if (!empty($_POST)) {
+    if (!empty($_POST['btn'])) {
         //add laguage to session
-        $_SESSION['language'] = $_POST['language'];
-        header("Location: register.php");
-    } else {
-        throw new Exception("No language selected");
+        if (!empty($_POST['language'])) {
+            $_SESSION['language'] = $_POST['language'];
+            header("Location: register.php");
+        } else {
+            throw new Exception("No language selected");
+        }
     }
 } catch (Throwable $e) {
     $error = $e->getMessage();
@@ -92,7 +94,7 @@ try {
                             <p class="text-red-500 text-xs italic"><?php echo $error; ?></p>
                         <?php endif; ?>
                 <div class="mr-[24px] mt-[32px]">
-                    <input type="submit" value="GA VERDER" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] tracking-[2px]">
+                    <input type="submit" value="GA VERDER" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] tracking-[2px]" name="btn">
                 </div>
             </form>
         </div>
