@@ -1,18 +1,22 @@
 <?php
 include_once("bootstrap.php");
 
-if (!empty($_POST)) {
-    try {
-        if (!empty($_POST['name'])) {
-            $name = $_POST['name'];
-            $_SESSION['name'] = $name;
-            header("Location: createSerre.php");
-        } else {
-            throw new Exception("Name can't be empty");
+if (isset($_SESSION['loggedin'])) {
+    if (!empty($_POST)) {
+        try {
+            if (!empty($_POST['name'])) {
+                $name = $_POST['name'];
+                $_SESSION['name'] = $name;
+                header("Location: createSerre.php");
+            } else {
+                throw new Exception("Name can't be empty");
+            }
+        } catch (throwable $e) {
+            $error = $e->getMessage();
         }
-    } catch (throwable $e) {
-        $error = $e->getMessage();
     }
+} else {
+    header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
