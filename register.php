@@ -62,10 +62,10 @@ if (!empty($_POST)) {
 </style>
 
 <body class="bg-[#F5F3F3] ml-auto mr-auto max-w-[500px]" style="height: 100%;">
-    <section class="flex justify-center items-center" style="height:35%">
+    <section class="flex justify-center items-center" style="height:30%">
         <p>LOGO</p>
     </section>
-    <main class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px]" style="height: 65%">
+    <main class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px]" style="height: 70%">
         <form action="" method="post">
             <h1 class="text-[26px] text-white pt-[44px]">Registreer u</h1>
             <div class="text-white text-[20px]">
@@ -91,7 +91,7 @@ if (!empty($_POST)) {
                 <input type="submit" value="REGISTREER" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]">
             </div>
             <div class="flex justify-center items-center text-xs mt-[32px]">
-                <p class="text-center">Heeft u al een account? </br><a href="register.php" ><span class="underline font-bold hover:text-white">Log in</span></a></p>
+                <p class="text-center">Heeft u al een account? </br><a href="login.php" ><span class="underline font-bold hover:text-white">Log in</span></a></p>
             </div>
         </form>
     </main>
