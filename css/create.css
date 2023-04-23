@@ -24,8 +24,8 @@ html {
 
 /* Hide horizontal scrollbar for WebKit-based browsers */
 ::-webkit-scrollbar {
-    height: 5px;
-    width: 5px;
+    height: 0px;
+    width: 0px;
 }
 
 ::-webkit-scrollbar-track {
