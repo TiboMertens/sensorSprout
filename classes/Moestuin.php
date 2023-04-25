@@ -199,6 +199,22 @@ class Moestuin
         }
     }
 
+    public function addPlants($moestuin_id)
+    {
+        foreach ($this->getPlants() as $plant) {
+            $conn = Db::getInstance();
+            $statement = $conn->prepare("select id from planten where name = :name");
+            $statement->bindValue(":name", $plant);
+            $statement->execute();
+            $plant = $statement->fetch();
+            $plant = $plant["id"];
+            $statement = $conn->prepare("insert into plant_moestuin (moestuin_id, plant_id) values (:moestuin_id, :plant_id)");
+            $statement->bindValue(":moestuin_id", $moestuin_id);
+            $statement->bindValue(":plant_id", $plant);
+            $statement->execute();
+        }
+    }
+
     public function deleteSensor($sensor, $moestuin_id)
     {
         $conn = Db::getInstance();
@@ -209,6 +225,20 @@ class Moestuin
         $sensor_id = $sensor_id["id"];
         $statement = $conn->prepare("DELETE FROM moestuin_sensor WHERE sensor_id = :sensor_id AND moestuin_id = :moestuin_id");
         $statement->bindValue(":sensor_id", $sensor_id);
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->execute();
+    }
+
+    public function deletePlant($plant, $moestuin_id)
+    {
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("select id from planten where name = :name");
+        $statement->bindValue(":name", $plant);
+        $statement->execute();
+        $plant_id = $statement->fetch();
+        $plant_id = $plant_id["id"];
+        $statement = $conn->prepare("DELETE FROM plant_moestuin WHERE plant_id = :plant_id AND moestuin_id = :moestuin_id");
+        $statement->bindValue(":plant_id", $plant_id);
         $statement->bindValue(":moestuin_id", $moestuin_id);
         $statement->execute();
     }
