@@ -65,7 +65,6 @@ if (isset($_SESSION['loggedin'])) {
                         <a href="home.php?id=<?php echo $counter + 1 ?>"><i class="fa-solid fa-arrow-right fa-xl ml-[0px] relative top-[2px]"></i></a>
                     </div>
                 </div>
-
                 <div>
                     <div class="w-[372px] h-[520px] bg-[#808080] flex flex-col justify-between">
                         <div class="flex-grow-1">
@@ -112,7 +111,7 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
-                            <input type="submit" value="DASHBOARD" name="dashboard" id="dashboard" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[12px]">
+                            <input type="submit" value="DASHBOARD" name="dashboard" id="dashboard" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
                         </form>
                     </div>
                 </div>
