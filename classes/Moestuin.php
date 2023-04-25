@@ -138,6 +138,40 @@ class Moestuin{
             $statement->bindValue(":plant_id", $plant);
             $statement->execute();
         }
+        header('Location: home.php');
+    }
+
+    public static function getAllSensors(){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT s.*
+        FROM moestuin m
+        JOIN moestuin_sensor ms ON ms.moestuin_id = m.id
+        JOIN sensors s ON s.id = ms.sensor_id
+        WHERE m.id = 1");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function getAllPlants(){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT p.*
+        FROM moestuin m
+        JOIN plant_moestuin pm ON pm.moestuin_id = m.id
+        JOIN planten p ON p.id = pm.plant_id
+        WHERE m.id = 1");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function getDetails($user_id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM moestuin WHERE user_id = :user_id");
+        $statement->bindValue(":user_id", $user_id);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }
 }
 ?>
