@@ -16,6 +16,11 @@ if (isset($_SESSION['loggedin'])) {
         $counter = 0;
     }
 
+    //if count is below zero, throw an error
+    if (count($details) < 1) {
+        throw new Exception("Je hebt nog geen moestuinen aangemaakt.");
+    }
+
     $name = $details[$counter]['name'];
     $moestuin_id = $details[$counter]['id'];
 

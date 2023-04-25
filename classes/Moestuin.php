@@ -212,4 +212,12 @@ class Moestuin
         $statement->bindValue(":moestuin_id", $moestuin_id);
         $statement->execute();
     }
+
+    public function delete($moestuin_id)
+    {
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("DELETE FROM moestuin WHERE id = :moestuin_id");
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->execute();
+    }
 }

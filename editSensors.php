@@ -63,6 +63,13 @@ if (isset($_SESSION['loggedin'])) {
         $_SESSION['selectedSensors'] = array();
         header('Location: home.php?id=' . $counter);
     }
+
+    //if the delete button is clicked, delete the moestuin
+    if (isset($_POST['delete'])) {
+        $moestuin = new Moestuin();
+        $moestuin->delete($moestuin_id);
+        header('Location: home.php');
+    }
 } else {
     header('Location: login.php');
 }
@@ -131,7 +138,7 @@ if (isset($_SESSION['loggedin'])) {
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
                             <input type="submit" value="GEREED" name="save" id="gereed" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[12px]">
-                            <input type="submit" value="verwijder moestuin" name="delete" id="verwijderen" class="mb-[14px] text-red-600 font-semibold hover:text-red-800">
+                            <input type="submit" value="verwijder moestuin" name="delete" id="verwijderen" class="mb-[14px] text-red-600 font-semibold hover:text-red-800 cursor-pointer">
                         </form>
                     </div>
                 </div>
