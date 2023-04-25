@@ -1,13 +1,30 @@
 <?php
 include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
-$user_id = $_SESSION['id']['id'];
+if (isset($_SESSION['loggedin'])) {
+    $user_id = $_SESSION['id']['id'];
 
-$details = Moestuin::getDetails($user_id);
-$name = $details[0]['name'];
+    $details = Moestuin::getDetails($user_id);
 
-$sensors = Moestuin::getAllSensors();
-$plants = Moestuin::getAllPlants();
+    if (isset($_GET['id']) && $_GET['id'] < count($details)) {
+        $counter = intval($_GET['id']);
+    } else {
+        $counter = 0;
+    }
+
+    if ($counter < 0) {
+        $counter = 0;
+    }
+
+    $name = $details[$counter]['name'];
+    $moestuin_id = $details[$counter]['id'];
+
+    $sensors = Moestuin::getAllSensors($user_id, $moestuin_id);
+    $plants = Moestuin::getAllPlants($user_id, $moestuin_id);
+} else {
+    header('Location: login.php');
+}
+
 
 
 ?>
@@ -29,10 +46,21 @@ $plants = Moestuin::getAllPlants();
 </head>
 
 <body>
-<div id="container" class="bg-[#F5F3F3]" style="height: 100%">
+    <div id="container" class="bg-[#F5F3F3]" style="height: 100%">
         <div id="container2" class="">
             <div>
-                <h1 class="font-bold text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
+                <div class="flex w-[372px] justify-between items-center">
+                    <div>
+                        <a href="home.php?id=<?php echo $counter - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px] relative top-[2px]"></i></a>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-[26px] mb-2 text-center"> <?php echo htmlspecialchars($name) ?> </h1>
+                    </div>
+                    <div>
+                        <a href="home.php?id=<?php echo $counter + 1 ?>"><i class="fa-solid fa-arrow-right fa-xl ml-[0px] relative top-[2px]"></i></a>
+                    </div>
+                </div>
+
                 <div>
                     <div class="w-[372px] h-[520px] bg-[#808080] flex flex-col justify-between">
                         <div class="flex-grow-1">
@@ -63,7 +91,8 @@ $plants = Moestuin::getAllPlants();
                             </div>
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
-                            <input type="submit" value="EDIT" name="edit" id="edit" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
+                            <input type="submit" value="DASHBOARD" name="dashboard" id="dashboard" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[12px]">
+                            <a href="editMoestuin.php" class="mb-[12px]">Aanpassen</a>
                         </form>
                     </div>
                 </div>

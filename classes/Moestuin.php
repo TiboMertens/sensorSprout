@@ -141,25 +141,29 @@ class Moestuin{
         header('Location: home.php');
     }
 
-    public static function getAllSensors(){
+    public static function getAllSensors($user_id, $moestuin_id){
         $conn = Db::getInstance();
         $statement = $conn->prepare("SELECT s.*
         FROM moestuin m
         JOIN moestuin_sensor ms ON ms.moestuin_id = m.id
         JOIN sensors s ON s.id = ms.sensor_id
-        WHERE m.id = 1");
+        WHERE m.id = :moestuin_id AND m.user_id = :user_id");
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->bindValue(":user_id", $user_id);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
 
-    public static function getAllPlants(){
+    public static function getAllPlants($user_id, $moestuin_id){
         $conn = Db::getInstance();
         $statement = $conn->prepare("SELECT p.*
         FROM moestuin m
         JOIN plant_moestuin pm ON pm.moestuin_id = m.id
         JOIN planten p ON p.id = pm.plant_id
-        WHERE m.id = 1");
+        WHERE m.id = :moestuin_id AND m.user_id = :user_id");
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->bindValue(":user_id", $user_id);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -174,4 +178,3 @@ class Moestuin{
         return $result;
     }
 }
-?>
