@@ -27,7 +27,6 @@ if (isset($_SESSION['loggedin'])) {
         $moestuin->setSensors($selectedSensors);
         $moestuin->setPlants($selectedPlants);
         $moestuin->save();
-        header('Location: home.php');
     }
 } else {
     header('Location: login.php');
