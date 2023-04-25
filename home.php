@@ -64,7 +64,15 @@ if (isset($_SESSION['loggedin'])) {
                 <div>
                     <div class="w-[372px] h-[520px] bg-[#808080] flex flex-col justify-between">
                         <div class="flex-grow-1">
-                            <h2 class="font-bold text-[14px] text-white ml-[24px] mt-[8px]">Sensoren</h2>
+                            <div class="flex">
+                                <h2 class="font-bold text-[14px] text-white ml-[24px] mt-[8px]">Sensoren</h2>
+                                <a href="editSensors.php">
+                                    <div class="flex relative top-[19px] ml-[8px]">
+                                        <i class="fa-solid fa-pen-to-square fa-xs"></i>
+                                        <p class="text-[10px] font-semibold relative bottom-2 ml-[4px]">Pas aan</p>
+                                    </div>
+                                </a>
+                            </div>
                             <div class="flex flex-wrap ml-[24px]">
                                 <?php foreach ($sensors as $sensor) : ?>
                                     <div class="mr-[12px]">
@@ -76,7 +84,15 @@ if (isset($_SESSION['loggedin'])) {
                                     </div>
                                 <?php endforeach; ?>
                             </div>
-                            <h2 class="font-bold text-[20px] text-white ml-[24px] mt-[8px]">Planten</h2>
+                            <div class="flex">
+                                <h2 class="font-bold text-[20px] text-white ml-[24px] mt-[8px]">Planten</h2>
+                                <a href="editPlants.php">
+                                    <div class="flex relative top-[24px] ml-[8px]">
+                                        <i class="fa-solid fa-pen-to-square fa-sm"></i>
+                                        <p class="text-[12px] font-semibold relative bottom-2 ml-[4px]">Pas aan</p>
+                                    </div>
+                                </a>
+                            </div>
                             <div class="flex flex-wrap justify-center">
                                 <?php foreach ($plants as $plant) : ?>
                                     <div class="mr-[24px] mb-[24px]">
@@ -92,7 +108,6 @@ if (isset($_SESSION['loggedin'])) {
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
                             <input type="submit" value="DASHBOARD" name="dashboard" id="dashboard" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[12px]">
-                            <a href="editMoestuin.php" class="mb-[12px]">Aanpassen</a>
                         </form>
                     </div>
                 </div>
