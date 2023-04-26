@@ -16,7 +16,9 @@ if (!empty($_POST)) {
 
     //create a new user object
     $user = new User();
-    $user->setSensor($sensor);
+    if (!empty($sensor)) {
+        $user->setSensor($sensor);
+    }
 
     //check if the user can login
     try {
