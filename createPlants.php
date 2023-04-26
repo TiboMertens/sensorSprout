@@ -51,13 +51,13 @@ if (isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <div id="container" class="bg-[#F5F3F3]" style="height: 100%">
+<body class="bg-[#F5F3F3]">
+    <div id="container"  style="height: 100%">
         <div id="container2" class="">
             <div>
                 <h1 class="font-bold text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
                 <div>
-                    <div class="w-[372px] h-[520px] bg-[#808080] flex flex-col justify-between">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#808080] flex flex-col justify-between">
                         <div class="flex-grow-1">
                             <h2 class="font-bold text-[14px] text-white ml-[24px] mt-[8px]">Geselecteerde sensoren</h2>
                             <div class="flex flex-wrap ml-[24px]">
@@ -72,7 +72,7 @@ if (isset($_SESSION['loggedin'])) {
                                 <?php endforeach; ?>
                             </div>
                             <h2 class="font-bold text-[20px] text-white ml-[24px] mt-[8px]">Voeg je planten toe</h2>
-                            <div class="flex flex-wrap justify-center">
+                            <div class="flex flex-wrap ml-[24px]">
                                 <?php foreach ($selectedPlants as $plant) : ?>
                                     <div class="mr-[24px] mb-[24px]">
                                         <form action="" method="post">
@@ -91,7 +91,7 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
-                            <input type="submit" value="SAVE" name="save" id="save" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
+                            <input type="submit" value="SAVE" name="save" id="save" class="h-[48px] bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
                         </form>
                     </div>
                     <p class="font-bold text-[16px] flex justify-center mt-2">Stap 4 van 4</p>
@@ -99,7 +99,7 @@ if (isset($_SESSION['loggedin'])) {
             </div>
         </div>
         <section class="flex justify-center items-center" style="height: 100%;">
-            <section id="add-section" class="hidden z-50 w-[500px]" style="height: 100%;">
+            <section id="add-section" class="hidden z-50 w-full" style="height: 100%;">
                 <section class="flex justify-center items-center" style="height: 20%;" id="close"></section>
                 <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px] overflow-y-auto" style="height: 80%">
                     <i class="fa-solid fa-arrow-left fa-lg pt-[32px] cursor-pointer" style="color: #ffffff;" id="close2"></i>

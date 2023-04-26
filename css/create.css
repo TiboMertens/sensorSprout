@@ -10,7 +10,6 @@ html {
 #container {
     height: auto;
     /* Allows content to grow beyond the page without overflow */
-    width: 500px;
     /* Allows content to grow beyond the page without overflow */
     min-height: 100%;
     /* Starts web page with 100% height. Fallback for IE 4-6 and older browsers */

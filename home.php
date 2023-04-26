@@ -6,6 +6,10 @@ if (isset($_SESSION['loggedin'])) {
 
     $details = Moestuin::getDetails($user_id);
 
+    if (isset($_POST['dashboard'])) {
+        header('Location: dashboard.php');
+    }
+
     if (isset($_GET['id']) && $_GET['id'] < count($details)) {
         $counter = intval($_GET['id']);
     } else {
@@ -43,18 +47,18 @@ if (isset($_SESSION['loggedin'])) {
     <title>Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/c2626c7e45.js" crossorigin="anonymous"></script>
-    <script src="js/overlay.js" defer></script>
     <link rel="stylesheet" href="css/create.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <div id="container" class="bg-[#F5F3F3]" style="height: 100%">
-        <div id="container2" class="">
+<body class="bg-[#F5F3F3]">
+    <div id="container" class="bg-[#F5F3F3] flex justify-center items-center">
+        <div class="">
             <div>
-                <div class="flex w-[372px] justify-between items-center">
+                <div class="flex w-[372px] md:w-[452px] lg:w-[522px] justify-between items-center">
                     <div>
                         <a href="home.php?id=<?php echo $counter - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px] relative top-[2px]"></i></a>
                     </div>
@@ -66,7 +70,7 @@ if (isset($_SESSION['loggedin'])) {
                     </div>
                 </div>
                 <div>
-                    <div class="w-[372px] h-[520px] bg-[#808080] flex flex-col justify-between">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#808080] flex flex-col justify-between">
                         <div class="flex-grow-1">
                             <div class="flex">
                                 <h2 class="font-bold text-[14px] text-white ml-[24px] mt-[8px]">Sensoren</h2>
@@ -97,7 +101,7 @@ if (isset($_SESSION['loggedin'])) {
                                     </div>
                                 </a>
                             </div>
-                            <div class="flex flex-wrap justify-center">
+                            <div class="flex flex-wrap ml-[24px]">
                                 <?php foreach ($plants as $plant) : ?>
                                     <div class="mr-[24px] mb-[24px]">
                                         <form action="" method="post">
@@ -111,12 +115,13 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
-                            <input type="submit" value="DASHBOARD" name="dashboard" id="dashboard" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
+                            <input type="submit" value="DASHBOARD" name="dashboard" id="dashboard" class="h-[48px] bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 
 </html>

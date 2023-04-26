@@ -53,13 +53,13 @@ if (isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <div id="container" class="bg-[#F5F3F3]" style="height: 100%">
+<body class="bg-[#F5F3F3]">
+    <div id="container" style="height: 100%">
         <div id="container2" class="">
             <div>
                 <h1 class="font-bold text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
                 <div>
-                    <div class="w-[372px] h-[520px] bg-[#808080] flex flex-col justify-between">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#808080] flex flex-col justify-between">
                         <div class="flex-grow-1">
                             <h2 class="font-bold text-[20px] text-white ml-[24px] mt-[8px]">Voeg je sensoren toe</h2>
                             <div class="flex flex-wrap ml-[24px]">
@@ -82,7 +82,7 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
-                            <input type="submit" value="VOLGENDE" name="volgende" id="name" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
+                            <input type="submit" value="VOLGENDE" name="volgende" id="name" class="h-[48px] bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
                         </form>
                     </div>
                     <p class="font-bold text-[16px] flex justify-center mt-2">Stap 3 van 4</p>

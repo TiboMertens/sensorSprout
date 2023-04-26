@@ -32,17 +32,17 @@ if (isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <div id="container" class="bg-[#F5F3F3]">
+<body class="bg-[#F5F3F3]">
+    <div id="container" >
         <div id="container2" class="">
             <div>
                 <h1 class="font-bold text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
                 <div>
-                    <div class="w-[372px] h-[520px]  flex flex-col justify-center items-center bg-[#808080]">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px]  flex flex-col justify-center items-center bg-[#808080]">
                         <h2 class="font-semibold text-[24px] mb-3 text-white">Gebruikt u een serre?</h2>
                         <form action="" method="post">
-                            <input type="submit" value="JA" name="btn" class="h-[48px] bg-[#81CCDE] w-[100px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mr-3">
-                            <input type="submit" value="NEE" name="btn" class="h-[48px] bg-[#81CCDE] w-[100px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]">
+                            <input type="submit" value="JA" name="btn" class="h-[48px] bg-[#81CCDE] w-[100px] md:w-[125px] lg:w-[175px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mr-3">
+                            <input type="submit" value="NEE" name="btn" class="h-[48px] bg-[#81CCDE] w-[100px] md:w-[125px] lg:w-[175px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]">
                         </form>
                     </div>
                     <p class="font-bold text-[16px] flex justify-center mt-2">Stap 2 van 4</p>

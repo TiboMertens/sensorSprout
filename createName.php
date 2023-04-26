@@ -36,23 +36,23 @@ if (isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-[#F5F3F3]">
     <div id="container" class="bg-[#F5F3F3]">
         <div id="container2" class="">
             <div>
                 <h1 class="font-bold text-[26px] mb-2">Naamgeving</h1>
                 <div>
-                    <div class="w-[372px] h-[520px] flex flex-col justify-center items-center bg-[#808080]">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] flex flex-col justify-center items-center bg-[#808080]">
                         <form action="" method="post">
                             <label for="name" class="text-white flex text-left ">
                                 Naam van uw moestuin:
                             </label>
-                            <input type="text" name="name" class="pl-[32px] font-bold w-[265px] text-black h-[48px] rounded-[5px] text-[16px] block mx-auto mt-2">
+                            <input type="text" name="name" class="pl-[32px] font-bold w-[265px] md:w-[325px] lg:w-[385px] text-black h-[48px] rounded-[5px] text-[16px] block mx-auto mt-2">
                             <!-- If there is an error, show it -->
                             <?php if (isset($error)) : ?>
                                 <p class="text-red-500 text-xs italic"><?php echo $error; ?></p>
                             <?php endif; ?>
-                            <input type="submit" value="VOLGENDE" id="name" class="h-[48px] bg-[#81CCDE] w-[265px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mt-3">
+                            <input type="submit" value="VOLGENDE" id="name" class="h-[48px] bg-[#81CCDE] w-[265px] md:w-[325px] lg:w-[385px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mt-3">
                         </form>
                     </div>
                     <p class="font-bold text-[16px] flex justify-center mt-2">Stap 1 van 4</p>

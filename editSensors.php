@@ -91,14 +91,13 @@ if (isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
-    <div id="container" class="bg-[#F5F3F3]" style="height: 100%">
-        <div class="mt-[24px] ml-[64px]"><a href="home.php?id=<?php echo $counter ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px] relative top-[2px]"></i></a></div>
+<body class="bg-[#F5F3F3]">
+    <div id="container"  style="height: 100%">
         <div id="container2" class="">
             <div>
                 <h1 class="font-bold text-[26px] mb-2 text-center"> <?php echo htmlspecialchars($name) ?> </h1>
                 <div>
-                    <div class="w-[372px] h-[520px] bg-[#808080] flex flex-col justify-between">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#808080] flex flex-col justify-between">
                         <div class="flex-grow-1">
                             <h2 class="font-bold text-[20px] text-white ml-[24px] mt-[8px]">Sensoren</h2>
                             <div class="flex flex-wrap ml-[24px]">
@@ -137,7 +136,7 @@ if (isset($_SESSION['loggedin'])) {
 
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
-                            <input type="submit" value="GEREED" name="save" id="gereed" class="h-[48px] bg-[#81CCDE] w-[324px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[12px]">
+                            <input type="submit" value="GEREED" name="save" id="gereed" class="h-[48px] bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[12px]">
                             <input type="submit" value="verwijder moestuin" name="delete" id="verwijderen" class="mb-[14px] text-red-600 font-semibold hover:text-red-800 cursor-pointer">
                         </form>
                     </div>
