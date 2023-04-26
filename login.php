@@ -1,6 +1,14 @@
 <?php
 include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
+if (!empty($_GET['qr_code'])) {
+    $qr_code = $_GET['qr_code'];
+    $sensor = Sensor::getSensorByQrCode($qr_code);
+
+    $sensor = $sensor['id'];
+    
+}
+
 if (!empty($_POST)) {
     //get the username and password from the form
     $username = $_POST['username'];
@@ -8,6 +16,7 @@ if (!empty($_POST)) {
 
     //create a new user object
     $user = new User();
+    $user->setSensor($sensor);
 
     //check if the user can login
     try {
@@ -65,11 +74,11 @@ if (!empty($_POST)) {
 
 <body class="bg-[#F5F3F3]" style="height: 100%;">
     <div class="absolute inset-0 flex items-center justify-center ">
-        <div class="">
-            <section class="flex justify-center items-center max-w-[500px]" style="height:30%">
+        <div class="max-w-[500px]">
+            <section class="flex justify-center items-center" style="height:30%">
                 <p>LOGO</p>
             </section>
-            <main class="bg-[#A5CF93] rounded-t-[5px] pl-[24px] pr-[24px]" style="height: 70%">
+            <main class="bg-[#A5CF93] rounded-t-[5px] pl-[24px] pr-[24px] w-[400px]" style="height: 70%">
                 <form action="" method="post">
                     <h1 class="text-[26px] text-white pt-[44px]">Log in</h1>
                     <div class="text-white text-[20px]">

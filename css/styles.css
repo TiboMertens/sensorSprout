@@ -5,3 +5,23 @@ h1, h2, h3, h4, h5, h6 {
 p, input, textarea, select, button, label {
     font-family: 'Lato', sans-serif;
 }
+
+/* Hide horizontal scrollbar for WebKit-based browsers */
+::-webkit-scrollbar {
+    height: 0px;
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+    width: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #aaa;
+}

@@ -1,26 +1,30 @@
-<?php include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
-//get language from session
-if (isset($_SESSION['language'])) {
-    $language = $_SESSION['language'];
-}
+<?php 
+include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
-if (!empty($_POST)) {
-    try {
-        if (!empty($_POST['terms'])) {
-            $user = new User();
-            $user->setLanguage($language);
-            $user->setUsername($_POST['username']);
-            $user->setEmail($_POST['email']);
-            $user->setPassword($_POST['password']);
-            $user->save();
+try {
+    if (!empty($_GET['qr_code'])) {
+        $qr_code = $_GET['qr_code'];
+        $sensor = Sensor::getSensorByQrCode($qr_code);
 
-            header("Location: home.php");
-        } else {
-            throw new Exception("Je moet de gebruikersvoorwaarden accepteren.");
-        }
-    } catch (Throwable $e) {
-        $error = $e->getMessage();
+        $sensor = $sensor['id'];
+        
     }
+        if (!empty($_POST)) {
+                if (!empty($_POST['terms'])) {
+                    $user = new User();
+                    $user->setSensor($sensor);
+                    $user->setUsername($_POST['username']);
+                    $user->setEmail($_POST['email']);
+                    $user->setPassword($_POST['password']);
+                    $user->save();
+        
+                    header("Location: create.php");
+                } else {
+                    throw new Exception("Je moet de gebruikersvoorwaarden accepteren.");
+                }
+        }
+} catch (Throwable $th) {
+    $error = $th->getMessage();
 }
 
 ?>

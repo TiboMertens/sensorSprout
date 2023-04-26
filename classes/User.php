@@ -7,6 +7,7 @@ class User
     private string $email;
     private string $password;
     private string $resetToken;
+    private int $sensor;
 
     /**
      * Get the value of language
@@ -95,18 +96,6 @@ class User
         return $this;
     }
 
-    public function save()
-    {
-        $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO users (language, username, email, password) values (:language, :username, :email, :password)");
-        $statement->bindValue(":language", $this->getLanguage());
-        $statement->bindValue(":username", $this->getUsername());
-        $statement->bindValue(":email", $this->getEmail());
-        $statement->bindValue(":password", $this->getPassword());
-        $result = $statement->execute();
-        return $result;
-    }
-
     /**
      * Get the value of id
      */
@@ -141,6 +130,9 @@ class User
 
         //check if password is correct, if not throw exception
         if (password_verify($password, $hash)) {
+            if (!empty($this->sensor)) {
+                $this->linkSensorToUser($user['id']);
+            }
             return true;
         } else {
             throw new Exception("Incorrect password.");
@@ -287,6 +279,52 @@ class User
     public function setId($id)
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    public function save()
+    {
+        //save the newly created user to the database and save the id of this user and the id of the sensor to the sensor_user table
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("INSERT INTO users (username, email, password) values (:username, :email, :password)");
+        $statement->bindValue(":username", $this->getUsername());
+        $statement->bindValue(":email", $this->getEmail());
+        $statement->bindValue(":password", $this->getPassword());
+        $result = $statement->execute();
+        $user_id = $conn->lastInsertId();
+        if (!empty($this->sensor)) {
+            $this->linkSensorToUser($user_id);
+        }
+        return $result;
+    }
+
+    public function linkSensorToUser($user_id)
+    {
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("INSERT INTO sensor_user (user_id, sensor_id) VALUES (:user_id, :sensor_id)");
+        $statement->bindValue(":user_id", $user_id);
+        $statement->bindValue(":sensor_id", $this->sensor);
+        $result = $statement->execute();
+        return $result;
+    }
+
+    /**
+     * Get the value of sensor
+     */
+    public function getSensor()
+    {
+        return $this->sensor;
+    }
+
+    /**
+     * Set the value of sensor
+     *
+     * @return  self
+     */
+    public function setSensor($sensor)
+    {
+        $this->sensor = $sensor;
 
         return $this;
     }
