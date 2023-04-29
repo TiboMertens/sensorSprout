@@ -55,7 +55,7 @@ if (isset($_SESSION['loggedin'])) {
                             <input type="submit" value="VOLGENDE" id="name" class="h-[48px] bg-[#81CCDE] w-[265px] md:w-[325px] lg:w-[385px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mt-3">
                         </form>
                     </div>
-                    <p class="font-bold text-[16px] flex justify-center mt-2">Stap 1 van 4</p>
+                    <p class="font-bold text-[16px] flex justify-center mt-2">1 van 4</p>
                 </div>
             </div>
         </div>

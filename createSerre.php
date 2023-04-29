@@ -45,7 +45,7 @@ if (isset($_SESSION['loggedin'])) {
                             <input type="submit" value="NEE" name="btn" class="h-[48px] bg-[#81CCDE] w-[100px] md:w-[125px] lg:w-[175px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]">
                         </form>
                     </div>
-                    <p class="font-bold text-[16px] flex justify-center mt-2">Stap 2 van 4</p>
+                    <p class="font-bold text-[16px] flex justify-center mt-2">2 van 4</p>
                 </div>
             </div>
         </div>
