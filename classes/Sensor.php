@@ -43,4 +43,13 @@ class Sensor {
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public static function getSensorId($sensor_name){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("select id from sensors where name = :name");
+        $statement->bindValue(":name", $sensor_name);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

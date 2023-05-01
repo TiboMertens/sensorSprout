@@ -250,4 +250,15 @@ class Moestuin
         $statement->bindValue(":moestuin_id", $moestuin_id);
         $statement->execute();
     }
+
+    public static function getCurrentData($sensor_id, $moestuin_id){
+        //get the current data from the readings table where the sensor_id is the same as the sensor_id of the moestuin
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM readings WHERE sensor_id = :sensor_id AND moestuin_id = :moestuin_id ORDER BY id DESC LIMIT 1");
+        $statement->bindValue(":sensor_id", $sensor_id);
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
