@@ -27,7 +27,7 @@ if (isset($_SESSION['loggedin'])) {
     $sensors = Moestuin::getAllSensors($user_id, $moestuin_id);
     $plants = Moestuin::getAllPlants($user_id, $moestuin_id);
 
-    $sensor_id = $sensors[0]['id'];
+    $sensor_id = $sensors[0]['name'];
 } else {
     header('Location: login.php');
 }
