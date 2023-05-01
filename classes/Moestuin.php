@@ -270,4 +270,45 @@ class Moestuin
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public static function getAllMoestuinen(){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT id FROM moestuin");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function getReadings($moestuin_id, $sensor_id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM readings WHERE moestuin_id = :moestuin_id AND sensor_id = :sensor_id AND DATE(date_time) = :currentDay");
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->bindValue(":sensor_id", $sensor_id);
+        $statement->bindValue(":currentDay", date('Y-m-d'));
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        
+    }
+
+    public static function getAvgSensors($moestuin_id){
+        //get all sensors from the moestuin
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT sensor_id FROM moestuin_sensor WHERE moestuin_id = :moestuin_id");
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->execute();
+        $sensors = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $sensors;
+
+    }
+
+    public static function insertAvg($avg, $moestuin_id, $sensor_id){
+        //insert the average of the sensor in the database
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("INSERT INTO data (avg_data, moestuin_id, sensor_id) VALUES (:avg, :moestuin_id, :sensor_id)");
+        $statement->bindValue(":avg", $avg);
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->bindValue(":sensor_id", $sensor_id);
+        $statement->execute();
+    }
 }
