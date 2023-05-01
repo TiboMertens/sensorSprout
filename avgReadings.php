@@ -9,7 +9,16 @@ for ($i = 0; $i < 7; $i++) {
     $avg[$date] = Moestuin::getAvg($date);
 }
 
-var_dump($avg[date('Y-m-d', strtotime("-1 days"))]);
+$todayData = $avg[date('Y-m-d')];
+$yesterdayData = $avg[date('Y-m-d', strtotime("-1 days"))];
+$twoDaysAgoData = $avg[date('Y-m-d', strtotime("-2 days"))];
+$threedaysAgoData = $avg[date('Y-m-d', strtotime("-3 days"))];
+$fourDaysAgoData = $avg[date('Y-m-d', strtotime("-4 days"))];
+$fiveDaysAgoData = $avg[date('Y-m-d', strtotime("-5 days"))];
+$sixDaysAgoData = $avg[date('Y-m-d', strtotime("-6 days"))];
+
+var_dump($todayData, $yesterdayData, $twoDaysAgoData, $threedaysAgoData, $fourDaysAgoData, $fiveDaysAgoData, $sixDaysAgoData);
+
 
 // // Get the current time and the target time (11:59 PM)
 // $target_time = strtotime('today 23:59:00');
