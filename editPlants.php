@@ -3,21 +3,12 @@ include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
 if (isset($_SESSION['loggedin'])) {
     $user_id = $_SESSION['id']['id'];
+    $moestuin_id = $_GET['id'];
 
-    $details = Moestuin::getDetails($user_id);
+    $details = Moestuin::getDetailsById($moestuin_id);
 
-    if (isset($_GET['id'])) {
-        $counter = intval($_GET['id']);
-    } else {
-        $counter = 0;
-    }
-
-    if ($counter < 0) {
-        $counter = 0;
-    }
-
-    $name = $details[$counter]['name'];
-    $moestuin_id = $details[$counter]['id'];
+    $name = $details['name'];
+    $moestuin_id = $details['id'];
 
     $plants = Moestuin::getAllPlants($user_id, $moestuin_id);
 
@@ -61,7 +52,7 @@ if (isset($_SESSION['loggedin'])) {
         $moestuin->addPlants($moestuin_id);
         //set the selected plants array to empty
         $_SESSION['selectedPlants'] = array();
-        header('Location: home.php?id=' . $counter);
+        header('Location: home.php?id=' . $moestuin_id);
     }
 
     //if the delete button is clicked, delete the moestuin

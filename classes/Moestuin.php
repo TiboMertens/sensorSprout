@@ -183,6 +183,15 @@ class Moestuin
         return $result;
     }
 
+    public static function getDetailsById($moestuin_id){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT * FROM moestuin WHERE id = :moestuin_id");
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     public function addSensors($moestuin_id)
     {
         foreach ($this->getSensors() as $sensor) {

@@ -3,21 +3,12 @@ include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
 if (isset($_SESSION['loggedin'])) {
     $user_id = $_SESSION['id']['id'];
+    $moestuin_id = $_GET['id'];
 
-    $details = Moestuin::getDetails($user_id);
+    $details = Moestuin::getDetailsById($moestuin_id);
 
-    if (isset($_GET['id'])) {
-        $counter = intval($_GET['id']);
-    } else {
-        $counter = 0;
-    }
-
-    if ($counter < 0) {
-        $counter = 0;
-    }
-
-    $name = $details[$counter]['name'];
-    $moestuin_id = $details[$counter]['id'];
+    //get the name from the details where the id is equal to the counter
+    $name = $details['name'];
 
     $sensors = Moestuin::getAllSensors($user_id, $moestuin_id);
 
@@ -61,7 +52,7 @@ if (isset($_SESSION['loggedin'])) {
         $moestuin->addSensors($moestuin_id);
         //set the selected sensors array to empty
         $_SESSION['selectedSensors'] = array();
-        header('Location: home.php?id=' . $counter);
+        header('Location: home.php?id=' . $moestuin_id);
     }
 
     //if the delete button is clicked, delete the moestuin

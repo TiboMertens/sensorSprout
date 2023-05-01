@@ -72,7 +72,7 @@ if (isset($_SESSION['loggedin'])) {
                         <div class="flex-grow-1">
                             <div class="flex">
                                 <h2 class="font-bold text-[14px] text-white ml-[24px] mt-[8px]">Sensoren</h2>
-                                <a href="editSensors.php">
+                                <a href="editSensors.php?id=<?php echo $moestuin_id ?>">
                                     <div class="flex relative top-[19px] ml-[8px]">
                                         <i class="fa-solid fa-pen-to-square fa-xs"></i>
                                         <p class="text-[10px] font-semibold relative bottom-2 ml-[4px]">Pas aan</p>
@@ -92,7 +92,7 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                             <div class="flex">
                                 <h2 class="font-bold text-[20px] text-white ml-[24px] mt-[8px]">Planten</h2>
-                                <a href="editPlants.php">
+                                <a href="editPlants.php?id=<?php echo $moestuin_id ?>">
                                     <div class="flex relative top-[24px] ml-[8px]">
                                         <i class="fa-solid fa-pen-to-square fa-sm"></i>
                                         <p class="text-[12px] font-semibold relative bottom-2 ml-[4px]">Pas aan</p>
