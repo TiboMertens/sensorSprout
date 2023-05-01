@@ -26,6 +26,8 @@ if (isset($_SESSION['loggedin'])) {
 
     $sensors = Moestuin::getAllSensors($user_id, $moestuin_id);
     $plants = Moestuin::getAllPlants($user_id, $moestuin_id);
+
+    $sensor_id = $sensors[0]['id'];
 } else {
     header('Location: login.php');
 }
@@ -111,7 +113,7 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                         </div>
                         <div class="flex flex-col items-center">
-                            <a class="h-[48px] text-center bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] pt-[10px]" href="dashboard.php?id=<?php echo $moestuin_id ?>">DASHBOARD</a>
+                            <a class="h-[48px] text-center bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] pt-[10px]" href="dashboard.php?id=<?php echo $moestuin_id ?>&sensorID=<?php echo $sensor_id ?>">DASHBOARD</a>
                         </div>
                         </form>
                     </div>
