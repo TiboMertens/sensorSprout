@@ -6,10 +6,6 @@ if (isset($_SESSION['loggedin'])) {
 
     $details = Moestuin::getDetails($user_id);
 
-    if (isset($_POST['dashboard'])) {
-        header('Location: dashboard.php');
-    }
-
     if (isset($_GET['id']) && $_GET['id'] < count($details)) {
         $counter = intval($_GET['id']);
     } else {
@@ -114,8 +110,9 @@ if (isset($_SESSION['loggedin'])) {
                                 <?php endforeach; ?>
                             </div>
                         </div>
-                        <form action="" method="post" class="flex flex-col items-center">
-                            <input type="submit" value="DASHBOARD" name="dashboard" id="dashboard" class="h-[48px] bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
+                        <div class="flex flex-col items-center">
+                            <a class="h-[48px] text-center bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] pt-[10px]" href="dashboard.php?id=<?php echo $moestuin_id ?>">DASHBOARD</a>
+                        </div>
                         </form>
                     </div>
                 </div>
