@@ -1,8 +1,18 @@
 <?php
 include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 
-//check if the current time is 23:59
-if(date('H:i') == '23:59'){
+// Get the current time and the target time (11:59 PM)
+$target_time = strtotime('today 23:59:00');
+$current_time = time();
+
+// Calculate the delay in seconds
+$delay = $target_time - $current_time;
+
+// Output the JavaScript code to reload the page after the delay
+echo '<script>setTimeout(function(){location.reload();}, ' . $delay * 1000 . ');</script>';
+
+// Check if the current time is after the target time
+if ($current_time == $target_time) {
     //get all moestuinen
     $moestuinen = Moestuin::getAllMoestuinen();
 
@@ -28,4 +38,3 @@ if(date('H:i') == '23:59'){
         }
     }
 }
-
