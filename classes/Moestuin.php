@@ -173,16 +173,6 @@ class Moestuin
         return $result;
     }
 
-    public static function getDetails($user_id)
-    {
-        $conn = Db::getInstance();
-        $statement = $conn->prepare("SELECT * FROM moestuin WHERE user_id = :user_id");
-        $statement->bindValue(":user_id", $user_id);
-        $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    }
-
     public static function getDetailsById($moestuin_id){
         $conn = Db::getInstance();
         $statement = $conn->prepare("SELECT * FROM moestuin WHERE id = :moestuin_id");
@@ -190,6 +180,16 @@ class Moestuin
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
+    }
+
+    public static function getMoestuinId($user_id){
+        //get the first moestuin of the user
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("SELECT id FROM moestuin WHERE user_id = :user_id");
+        $statement->bindValue(":user_id", $user_id);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result["id"];
     }
 
     public function addSensors($moestuin_id)

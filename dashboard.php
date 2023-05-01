@@ -110,7 +110,7 @@ if (isset($_SESSION['loggedin'])) {
 <body>
     <section class="max-w-[1024px] mx-auto sm:mt-[70px]">
         <div class="flex items-center justify-center">
-            <a href="home.php"><i class="fa-solid fa-arrow-left fa-xl mr-2"></i></a>
+            <a href="home.php?id=<?php echo $moestuin_id ?>"><i class="fa-solid fa-arrow-left fa-xl mr-2"></i></a>
             <h1 class="text-center my-[42px] text-[26px] lg:text-[28px] font-semibold">Dashboard</h1>
         </div>
         <div class="flex sm:justify-center">
