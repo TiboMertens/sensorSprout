@@ -8,4 +8,5 @@ light-green: #A5CF93
 blue: #81CCDE
 blue-hover: #5EBCD4
 off-black: #262626
-off-white: #F5F3F3
+off-white-light: #F7F7F7
+off-white-dark= #E9E9E9
