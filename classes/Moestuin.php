@@ -305,7 +305,8 @@ class Moestuin
     public static function insertAvg($avg, $moestuin_id, $sensor_id){
         //insert the average of the sensor in the database
         $conn = Db::getInstance();
-        $statement = $conn->prepare("INSERT INTO data (avg_data, moestuin_id, sensor_id) VALUES (:avg, :moestuin_id, :sensor_id)");
+        $statement = $conn->prepare("INSERT INTO data (date, avg_data, moestuin_id, sensor_id) VALUES (:date, :avg, :moestuin_id, :sensor_id)");
+        $statement->bindValue(":date", date('Y-m-d'));
         $statement->bindValue(":avg", $avg);
         $statement->bindValue(":moestuin_id", $moestuin_id);
         $statement->bindValue(":sensor_id", $sensor_id);
