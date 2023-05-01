@@ -53,16 +53,16 @@ if (isset($_SESSION['loggedin'])) {
         //if the current temperature is lower than the highest minimum temperature of all the plants, echo 'hey'.
         if ($Temperatuursensor < max($minTemp)) {
             $TemperatuursensorStatus = 'bad';
-            $status = 'Te laag!';
+            $tempStatus = 'Te laag!';
         } elseif ($Temperatuursensor > min($maxTemp)) {
             $TemperatuursensorStatus = 'bad';
-            $status = 'Te hoog!';
+            $tempStatus = 'Te hoog!';
         } elseif ($Temperatuursensor > min($minTemp) && $Temperatuursensor < max($maxTemp)) {
             $TemperatuursensorStatus = 'good';
-            $status = 'Goed!';
+            $tempStatus = 'Goed!';
         } elseif ($Temperatuursensor = min($maxTemp) || $Temperatuursensor = max($minTemp)) {
             $TemperatuursensorStatus = 'warning';
-            $status = 'Opgelet!';
+            $tempStatus = 'Opgelet!';
         }
     }
 
@@ -70,16 +70,16 @@ if (isset($_SESSION['loggedin'])) {
         //if the current moisture is lower than the highest minimum moisture of all the plants, echo 'hey'.
         if ($Bodemvochtsensor < max($minMoisture)) {
             $BodemvochtsensorStatus = 'bad';
-            $status = 'Te laag!';
+            $vochtStatus = 'Te laag!';
         } elseif ($Bodemvochtsensor > min($maxMoisture)) {
             $BodemvochtsensorStatus = 'bad';
-            $status = 'Te hoog!';
+            $vochtStatus = 'Te hoog!';
         } elseif ($Bodemvochtsensor > min($minMoisture) && $Bodemvochtsensor < max($maxMoisture)) {
             $BodemvochtsensorStatus = 'good';
-            $status = 'Goed!';
+            $vochtStatus = 'Goed!';
         } elseif ($Bodemvochtsensor = min($maxMoisture) || $Bodemvochtsensor = max($minMoisture)) {
             $BodemvochtsensorStatus = 'warning';
-            $status = 'Opgelet!';
+            $vochtStatus = 'Opgelet!';
         }
     }
 
@@ -133,7 +133,7 @@ if (isset($_SESSION['loggedin'])) {
                     }
                     ?>
                     <div class="bg-[#E9E9E9] h-[25px] w-[25px] ml-[25px] rounded-sm" title="<?php echo $sensor['name'] ?>">
-                        <div class="relative left-[22px] bottom-[3px] h-[8px] w-[8px] bg-[<?php echo $color ?>] rounded" title="<?php echo $status ?>"></div>
+                        <div class="relative left-[22px] bottom-[3px] h-[8px] w-[8px] bg-[<?php echo $color ?>] rounded"></div>
                     </div>
                 </a>
             <?php endforeach; ?>
@@ -143,12 +143,37 @@ if (isset($_SESSION['loggedin'])) {
         <section class="sm:flex">
             <div class="sm:w-1/2">
                 <h3 class="text-[20px] lg:text-[24px] text-black ml-5 mt-[24px] mb-[16px]">Live data</h3>
-                <div class="ml-5 mr-5 h-[100px] sm:h-[200px] bg-[#A5CF93] rounded-md flex justify-between items-center max-w-[640px]">
+                <?php if ($currentSensor == "Temperatuursensor") {
+                        if ($TemperatuursensorStatus === 'bad') {
+                            $divColor = '#FF0000';
+                        } elseif ($TemperatuursensorStatus === 'warning') {
+                            $divColor = '#FFB800';
+                        } else {
+                            $divColor = '#A5CF93';
+                        }
+                    } elseif ($currentSensor == "Bodemvochtsensor") {
+                        if ($BodemvochtsensorStatus === 'bad') {
+                            $divColor = '#FF0000';
+                        } elseif ($BodemvochtsensorStatus === 'warning') {
+                            $divColor = '#FFB800';
+                        } else {
+                            $divColor = '#A5CF93';
+                        }
+                    } ?>
+                <div class="ml-5 mr-5 h-[100px] sm:h-[200px] bg-[<?php echo $divColor ?>] rounded-md flex justify-between items-center max-w-[640px]">
                     <div class="text-center w-1/2">
-                        <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';">GOED!</p>
+                        <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';"><?php if ($currentSensor == "Temperatuursensor") {
+                            echo $tempStatus;
+                        } elseif ($currentSensor == "Bodemvochtsensor") {
+                            echo $vochtStatus;
+                        } ?></p>
                     </div>
                     <div class="text-center w-1/2">
-                        <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';">23 °C</p>
+                        <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';"><?php if ($currentSensor == "Temperatuursensor") {
+                            echo $Temperatuursensor . " °C";
+                        } elseif ($currentSensor == "Bodemvochtsensor") {
+                            echo $Bodemvochtsensor . "%";
+                        } ?></p>
                     </div>
                 </div>
             </div>
