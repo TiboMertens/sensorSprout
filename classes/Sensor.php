@@ -53,11 +53,17 @@ class Sensor {
         return $result;
     }
 
-    public static function saveReading($temperature){
+    public static function saveReading($temperature, $ldr){
         $conn = DB::getInstance();
         $statement = $conn->prepare("INSERT INTO readings (data, sensor_id, moestuin_id) VALUES (:data, :sensor_id, :moestuin_id)");
         $statement->bindValue(":data", $temperature);
         $statement->bindValue(":sensor_id", 2);
+        $statement->bindValue(":moestuin_id", 3);
+        $statement->execute();
+
+        $statement = $conn->prepare("INSERT INTO readings (data, sensor_id, moestuin_id) VALUES (:data, :sensor_id, :moestuin_id)");
+        $statement->bindValue(":data", $ldr);
+        $statement->bindValue(":sensor_id", 3);
         $statement->bindValue(":moestuin_id", 3);
         $statement->execute();
     }
