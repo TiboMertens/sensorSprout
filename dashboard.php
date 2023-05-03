@@ -119,13 +119,32 @@ if (isset($_SESSION['loggedin'])) {
     $currentSensor = $_GET['sensorID'];
     if ($currentSensor == 'Temperatuursensor') {
         $sensorTime = $timeArray[0];
+        $chartID = 2;
     } elseif ($currentSensor == 'Bodemvochtsensor') {
         $sensorTime = $timeArray[1];
+        $chartID = 1;
     } elseif ($currentSensor == 'Lichtsensor') {
         $sensorTime = $timeArray[2];
+        $chartID = 3;
     }
 
+    $dates = array();
+    $avg = array(); // Assuming $avg is already defined elsewhere
 
+    // Loop through the past seven days
+    for ($i = 0; $i < 7; $i++) {
+        // Get the date for the current iteration
+        $date = date('m-d', strtotime("-$i days"));
+
+        // Get the average for the current date
+        $dateAvg = date('Y-m-d', strtotime("-$i days"));
+
+        $average = Moestuin::getAvg($dateAvg, $chartID);
+
+        // Push the date and average into the arrays
+        array_push($dates, $date);
+        array_push($avg, $average);
+    }
 } else {
     header('Location: login.php');
 }
@@ -144,6 +163,7 @@ if (isset($_SESSION['loggedin'])) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -218,8 +238,8 @@ if (isset($_SESSION['loggedin'])) {
                         $divColor = '#A5CF93';
                     }
                 }
-                 ?>
-                <div class="ml-5 mr-5 h-[100px] sm:h-[200px] bg-[<?php echo $divColor ?>] rounded-md flex justify-between items-center max-w-[640px]">
+                ?>
+                <div class="ml-5 mr-5 h-[100px] sm:h-[230px] bg-[<?php echo $divColor ?>] rounded-md flex justify-between items-center max-w-[640px]">
                     <div class="text-center w-1/2">
                         <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';">
                             <?php if ($currentSensor == "Temperatuursensor") {
@@ -245,10 +265,57 @@ if (isset($_SESSION['loggedin'])) {
             </div>
             <div class="sm:w-1/2">
                 <h3 class="text-[20px] lg:text-[24px] text-black p-0 ml-5 mb-[16px] mt-[36px] sm:mt-[24px]">Weekoverzicht</h3>
-                <div class="mx-5 bg-[#E9E9E9] rounded-md h-[200px] max-w-[640px]"></div>
+                <div class="mx-5 sm:mx-0 h-[350px] w-[460px] sm:max-w-[640px]">
+                    <canvas class="px-5 py-2 rounded-md bg-[#E9E9E9]" id="myChart" data-dates="<?php echo htmlspecialchars(json_encode($dates)) ?>" data-avg="<?php echo htmlspecialchars(json_encode($avg)) ?>"></canvas>
+                </div>
             </div>
         </section>
     </section>
+    <script>
+        const ctx = document.getElementById('myChart');
+        // get data from canvas
+        const dates = JSON.parse(ctx.dataset.dates);
+        const avg = JSON.parse(ctx.dataset.avg);
+
+        let dataToday = avg[0]['AVG(data)'];
+        let dataYesterday = avg[1]['AVG(data)'];
+        let dataTwoDaysAgo = avg[2]['AVG(data)'];
+        let dataThreeDaysAgo = avg[3]['AVG(data)'];
+        let dataFourDaysAgo = avg[4]['AVG(data)'];
+        let dataFiveDaysAgo = avg[5]['AVG(data)'];
+        let dataSixDaysAgo = avg[6]['AVG(data)'];
+
+        console.log(dataToday, dataYesterday, dataTwoDaysAgo, dataThreeDaysAgo, dataFourDaysAgo, dataFiveDaysAgo, dataSixDaysAgo);
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [
+                    dates[6],
+                    dates[5],
+                    dates[4],
+                    dates[3],
+                    dates[2],
+                    dates[1],
+                    dates[0]
+                ],
+                datasets: [{
+                    label: 'Average',
+                    data: [
+                        dataSixDaysAgo, dataFiveDaysAgo, dataFourDaysAgo, dataThreeDaysAgo, dataTwoDaysAgo, dataYesterday, dataToday
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 

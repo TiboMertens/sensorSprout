@@ -274,12 +274,13 @@ class Moestuin
         return $result;
     }
 
-    public static function getAvg($date)
+    public static function getAvg($date, $id)
     {
         //get the average of the data from the current day
         $conn = Db::getInstance();
-        $statement = $conn->prepare("SELECT AVG(data) FROM readings WHERE date_time = :date AND sensor_id = 2 AND moestuin_id = 3");
+        $statement = $conn->prepare("SELECT AVG(data) FROM readings WHERE DATE(date_time) = :date AND sensor_id = :id AND moestuin_id = 3");
         $statement->bindValue(":date", $date);
+        $statement->bindValue(":id", $id);
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
