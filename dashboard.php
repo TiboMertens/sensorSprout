@@ -5,6 +5,10 @@ if (isset($_SESSION['loggedin'])) {
     $user = new User();
     $user_id = $_SESSION['id']['id'];
     $moestuin_id = $_GET['id'];
+
+    if ($moestuin_id == null) {
+        header('Location: home.php');
+    }
     $sensors = Moestuin::getAllSensors($user_id, $moestuin_id);
     $plants = Moestuin::getAllPlants($user_id, $moestuin_id);
 
@@ -32,6 +36,9 @@ if (isset($_SESSION['loggedin'])) {
         array_push($maxMoisture, $plant['max_moisture']);
     }
 
+    $minLight = 70;
+    $maxLight = 100;
+
     $sensorNames = array();
     foreach ($sensors as $sensor) {
         array_push($sensorNames, $sensor['name']);
@@ -55,6 +62,7 @@ if (isset($_SESSION['loggedin'])) {
     }
 
     if (isset($Temperatuursensor)) {
+        $tempData = $Temperatuursensor;
         //if the current temperature is lower than the highest minimum temperature of all the plants, echo 'hey'.
         if ($Temperatuursensor < max($minTemp)) {
             $TemperatuursensorStatus = 'bad';
@@ -89,11 +97,32 @@ if (isset($_SESSION['loggedin'])) {
         }
     }
 
+    //do the same for Lichtsensor
+    if (isset($Lichtsensor)) {
+        $lichtData = $Lichtsensor;
+        //if the current light is lower than the highest minimum light of all the plants, echo 'hey'.
+        if ($Lichtsensor < $minLight) {
+            $LichtsensorStatus = 'bad';
+            $lichtStatus = 'Te laag!';
+        } elseif ($Lichtsensor > $maxLight) {
+            $LichtsensorStatus = 'bad';
+            $lichtStatus = 'Te hoog!';
+        } elseif ($Lichtsensor > $minLight && $Lichtsensor < $maxLight) {
+            $LichtsensorStatus = 'good';
+            $lichtStatus = 'Goed!';
+        } elseif ($Lichtsensor = $maxLight || $Lichtsensor = $minLight) {
+            $LichtsensorStatus = 'warning';
+            $lichtStatus = 'Opgelet!';
+        }
+    }
+
     $currentSensor = $_GET['sensorID'];
     if ($currentSensor == 'Temperatuursensor') {
         $sensorTime = $timeArray[0];
     } elseif ($currentSensor == 'Bodemvochtsensor') {
         $sensorTime = $timeArray[1];
+    } elseif ($currentSensor == 'Lichtsensor') {
+        $sensorTime = $timeArray[2];
     }
 
 
@@ -143,6 +172,14 @@ if (isset($_SESSION['loggedin'])) {
                         } else {
                             $color = '#A5CF93';
                         }
+                    } elseif ($sensor['name'] == "Lichtsensor") {
+                        if ($LichtsensorStatus === 'bad') {
+                            $color = '#FF0000';
+                        } elseif ($LichtsensorStatus === 'warning') {
+                            $color = '#FFB800';
+                        } else {
+                            $color = '#A5CF93';
+                        }
                     }
                     ?>
                     <div class="bg-[#E9E9E9] h-[25px] w-[25px] ml-[25px] rounded-sm" title="<?php echo $sensor['name'] ?>">
@@ -172,7 +209,16 @@ if (isset($_SESSION['loggedin'])) {
                     } else {
                         $divColor = '#A5CF93';
                     }
-                } ?>
+                } elseif ($currentSensor == "Lichtsensor") {
+                    if ($LichtsensorStatus === 'bad') {
+                        $divColor = '#FF0000';
+                    } elseif ($LichtsensorStatus === 'warning') {
+                        $divColor = '#FFB800';
+                    } else {
+                        $divColor = '#A5CF93';
+                    }
+                }
+                 ?>
                 <div class="ml-5 mr-5 h-[100px] sm:h-[200px] bg-[<?php echo $divColor ?>] rounded-md flex justify-between items-center max-w-[640px]">
                     <div class="text-center w-1/2">
                         <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';">
@@ -180,14 +226,19 @@ if (isset($_SESSION['loggedin'])) {
                                 echo $tempStatus;
                             } elseif ($currentSensor == "Bodemvochtsensor") {
                                 echo $vochtStatus;
-                            } ?></p>
+                            } elseif ($currentSensor == "Lichtsensor") {
+                                echo $lichtStatus;
+                            }
+                            ?></p>
                     </div>
                     <div class="text-center w-1/2">
                         <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';">
                             <?php if ($currentSensor == "Temperatuursensor") {
-                                echo $Temperatuursensor . " °C";
+                                echo $tempData . " °C";
                             } elseif ($currentSensor == "Bodemvochtsensor") {
                                 echo $vochtData . "%";
+                            } elseif ($currentSensor == "Lichtsensor") {
+                                echo $lichtData . "%";
                             } ?></p>
                     </div>
                 </div>

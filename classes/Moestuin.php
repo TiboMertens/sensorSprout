@@ -278,7 +278,7 @@ class Moestuin
     {
         //get the average of the data from the current day
         $conn = Db::getInstance();
-        $statement = $conn->prepare("SELECT AVG(data) FROM readings WHERE date = :date AND sensor_id = 2 AND moestuin_id = 3");
+        $statement = $conn->prepare("SELECT AVG(data) FROM readings WHERE date_time = :date AND sensor_id = 2 AND moestuin_id = 3");
         $statement->bindValue(":date", $date);
         $statement->execute();
         $result = $statement->fetch(PDO::FETCH_ASSOC);
