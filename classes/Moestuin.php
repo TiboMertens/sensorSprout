@@ -284,4 +284,14 @@ class Moestuin
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public static function getLastUpdate($moestuin_id, $sensor_id){
+        $conn = DB::getInstance();
+        $statement = $conn->prepare("SELECT date_time FROM readings WHERE moestuin_id = :moestuin_id AND sensor_id = :sensor_id ORDER BY date_time DESC LIMIT 1");
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->bindValue(":sensor_id", $sensor_id);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }

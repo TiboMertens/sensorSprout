@@ -39,6 +39,7 @@ if (isset($_SESSION['loggedin'])) {
 
     //get the current data for every sensor
     $currentData = array(); // initialize empty array
+    $timeArray = array();
     foreach ($sensorNames as $sensorName) {
         //get the sensor id from the sensor corresponding to the sensor name
         $sensor_id = Sensor::getSensorId($sensorName);
@@ -50,6 +51,7 @@ if (isset($_SESSION['loggedin'])) {
         $lastUpdate = $currentData[$sensorName]['date_time'];
         $time = strtotime($lastUpdate);
         $timeString = date('H:i:s', $time);
+        array_push($timeArray, $timeString);
     }
 
     if (isset($Temperatuursensor)) {
@@ -70,6 +72,7 @@ if (isset($_SESSION['loggedin'])) {
     }
 
     if (isset($Bodemvochtsensor)) {
+        $vochtData = $Bodemvochtsensor;
         //if the current moisture is lower than the highest minimum moisture of all the plants, echo 'hey'.
         if ($Bodemvochtsensor < max($minMoisture)) {
             $BodemvochtsensorStatus = 'bad';
@@ -87,6 +90,13 @@ if (isset($_SESSION['loggedin'])) {
     }
 
     $currentSensor = $_GET['sensorID'];
+    if ($currentSensor == 'Temperatuursensor') {
+        $sensorTime = $timeArray[0];
+    } elseif ($currentSensor == 'Bodemvochtsensor') {
+        $sensorTime = $timeArray[1];
+    }
+
+
 } else {
     header('Location: login.php');
 }
@@ -145,7 +155,7 @@ if (isset($_SESSION['loggedin'])) {
         <h2 class="text-[22px] lg:text-[26px] text-black ml-5 mt-[16px] sm:text-center"><?php echo $currentSensor ?></h2>
         <section class="sm:flex">
             <div class="sm:w-1/2">
-                <h3 class="text-[20px] lg:text-[24px] text-black ml-5 mt-[24px] mb-[16px]">Live data <span class="text-[12px]" style="font-family: Lato;">Laatste update: &nbsp;<?php echo $timeString; ?></span></h3>
+                <h3 class="text-[20px] lg:text-[24px] text-black ml-5 mt-[24px] mb-[16px]">Live data <span class="text-[12px]" style="font-family: Lato;">Laatste update: &nbsp;<?php echo $sensorTime; ?></span></h3>
                 <?php if ($currentSensor == "Temperatuursensor") {
                     if ($TemperatuursensorStatus === 'bad') {
                         $divColor = '#FF0000';
@@ -177,7 +187,7 @@ if (isset($_SESSION['loggedin'])) {
                             <?php if ($currentSensor == "Temperatuursensor") {
                                 echo $Temperatuursensor . " °C";
                             } elseif ($currentSensor == "Bodemvochtsensor") {
-                                echo $Bodemvochtsensor . "%";
+                                echo $vochtData . "%";
                             } ?></p>
                     </div>
                 </div>
