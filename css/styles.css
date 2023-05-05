@@ -1,8 +1,8 @@
-h1, h2, h3, h4, h5, h6 {
+h1, h2{
     font-family: 'Yeseva one', cursive;
 }
 
-p, input, textarea, select, button, label {
+h3, p, input, textarea, select, button, label {
     font-family: 'Lato', sans-serif;
 }
 

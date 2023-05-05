@@ -101,7 +101,7 @@ try {
                                 </div>
                                 <div class="flex flex-wrap ml-[24px]">
                                     <?php foreach ($plants as $plant) : ?>
-                                        <a href="todo.php?id=<?php echo $plant['id'] ?>">
+                                        <a href="todo.php?id=<?php echo $plant['id'] ?>&moestuin_id=<?php echo $moestuin_id ?>">
                                             <div class="mr-[24px] mb-[24px]">
                                                 <div class="pt-[8px]">
                                                     <div class="h-[72px] w-[72px] bg-black flex justify-center items-center"></div>
