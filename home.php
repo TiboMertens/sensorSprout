@@ -28,9 +28,6 @@ try {
 } catch (\Throwable $th) {
     $error = $th->getMessage();
 }
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -104,14 +101,14 @@ try {
                                 </div>
                                 <div class="flex flex-wrap ml-[24px]">
                                     <?php foreach ($plants as $plant) : ?>
-                                        <div class="mr-[24px] mb-[24px]">
-                                            <form action="" method="post">
+                                        <a href="todo.php?id=<?php echo $plant['id'] ?>">
+                                            <div class="mr-[24px] mb-[24px]">
                                                 <div class="pt-[8px]">
                                                     <div class="h-[72px] w-[72px] bg-black flex justify-center items-center"></div>
                                                     <p class="pt-1 text-[12px] font-medium text-white max-w-[72px] break-all text-left"><?php echo wordwrap($plant['name'], 10, '-') ?></p>
                                                 </div>
-                                            </form>
-                                        </div>
+                                            </div>
+                                        </a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
