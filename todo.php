@@ -155,7 +155,6 @@ if (isset($_SESSION['loggedin'])) {
                     </div>
                 <?php endforeach; ?>
             </section>
-
         </div>
     </section>
 </body>
