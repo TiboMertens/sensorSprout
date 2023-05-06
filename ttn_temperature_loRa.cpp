@@ -44,7 +44,7 @@ void loop() {
 
   // Read the LDR value and map it to a value between 0 and 100
   LDR_Reading = analogRead(LDR_Pin);
-  int mapped_value = map(LDR_Reading, 450, 1032, 0, 100);
+  int mapped_value = map(LDR_Reading, 0, 1032, 0, 100);
     debugSerial.print("LDR: ");
     debugSerial.println(mapped_value);
 
