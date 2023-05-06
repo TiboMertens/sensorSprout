@@ -105,7 +105,7 @@ try {
                                         </div>
                                     </a>
                                 </div>
-                                <div class="flex flex-wrap ml-[24px] max-h-[285px] overflow-y-auto mb-[12px]">
+                                <div class="flex flex-wrap ml-[24px] max-h-[260px] overflow-y-auto">
                                     <?php foreach ($plants as $plant) : ?>
                                         <a href="todo.php?id=<?php echo $plant['id'] ?>&moestuin_id=<?php echo $moestuin_id ?>">
                                             <div class="mr-[12px] mb-[3px]">
@@ -118,7 +118,8 @@ try {
                                 </div>
                             </div>
                             <div class="flex flex-col items-center">
-                                <a class="h-[48px] text-center bg-[#81CCDE] w-[270px] md:w-[370px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] pt-[10px]" href="dashboard.php?id=<?php echo $moestuin_id ?>&sensorID=<?php echo $sensor_id ?>">DASHBOARD</a>
+                                <a class="h-[48px] text-center bg-[#81CCDE] mt-[12px] w-[270px] md:w-[370px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] pt-[10px]" href="dashboard.php?id=<?php echo $moestuin_id ?>&sensorID=<?php echo $sensor_id ?>">DASHBOARD</a>
+                                <a class="text-white font-bold mt-[12px] mb-[20px]" href="createName.php">MOESTUIN TOEVOEGEN</a>
                             </div>
                             </form>
                         </div>
