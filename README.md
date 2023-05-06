@@ -10,3 +10,8 @@ blue-hover: #5EBCD4
 off-black: #262626
 off-white-light: #F7F7F7
 off-white-dark= #E9E9E9
+
+**LOGIN**
+-------------------
+USERNAME: Tibo
+PASSWORD: 12345
