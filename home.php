@@ -22,6 +22,12 @@ try {
         $plants = Moestuin::getAllPlants($user_id, $moestuin_id);
 
         $sensor_id = $sensors[0]['name'];
+
+        if ($details['is_serre'] == 1) {
+            $border = '#81CCDE';
+        } else {
+            $border = '#496149';
+        }
     } else {
         header('Location: login.php');
     }
@@ -56,26 +62,25 @@ try {
         <?php else : ?>
             <div class="">
                 <div>
-                    <div class="flex w-[372px] md:w-[452px] lg:w-[522px] justify-between items-center">
+                    <div class="flex w-[372px] md:w-[452px] lg:w-[522px] justify-between items-center mb-[12px]">
                         <div>
-                            <a href="home.php?id=<?php echo $moestuin_id - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px] relative top-[2px]"></i></a>
+                            <a href="home.php?id=<?php echo $moestuin_id - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px]"></i></a>
                         </div>
                         <div>
                             <h1 class="font-bold text-[26px] mb-2 text-center"> <?php echo htmlspecialchars($name) ?> </h1>
                         </div>
                         <div>
-                            <a href="home.php?id=<?php echo $moestuin_id + 1 ?>"><i class="fa-solid fa-arrow-right fa-xl ml-[0px] relative top-[2px]"></i></a>
+                            <a href="home.php?id=<?php echo $moestuin_id + 1 ?>"><i class="fa-solid fa-arrow-right fa-xl ml-[0px]"></i></a>
                         </div>
                     </div>
                     <div>
-                        <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#808080] flex flex-col justify-between">
-                            <div class="flex-grow-1">
+                        <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] rounded-lg bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;">
+                            <div class="flex-grow-1 ml-[20px] md:ml-[10px] lg:ml-[0px]">
                                 <div class="flex">
-                                    <h2 class="font-bold text-[14px] text-white ml-[24px] mt-[8px]">Sensoren</h2>
+                                    <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[20px]">Sensoren</h2>
                                     <a href="editSensors.php?id=<?php echo $moestuin_id ?>">
-                                        <div class="flex relative top-[19px] ml-[8px]">
-                                            <i class="fa-solid fa-pen-to-square fa-xs"></i>
-                                            <p class="text-[10px] font-semibold relative bottom-2 ml-[4px]">Pas aan</p>
+                                        <div class="flex relative top-[35px] ml-[8px]">
+                                            <p class="text-[10px] text-white font-semibold relative bottom-2 ml-[4px]">Aanpassen</p>
                                         </div>
                                     </a>
                                 </div>
@@ -84,28 +89,28 @@ try {
                                         <div class="mr-[12px]">
                                             <form action="" method="post">
                                                 <div class="pt-[8px]">
-                                                    <div class="h-[32px] w-[32px] bg-black flex justify-center items-center"></div>
+                                                    <div class="h-[32px] w-[32px] bg-[#5C7C5B] rounded-md border-2 border-[#496048] flex justify-center items-center">
+                                                        <p class="text-[14px]" style="font-family: Yeseva One;"><?php echo $sensor['short_name'] ?></p>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
                                 <div class="flex">
-                                    <h2 class="font-bold text-[20px] text-white ml-[24px] mt-[8px]">Planten</h2>
+                                    <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[24px] ">Planten</h2>
                                     <a href="editPlants.php?id=<?php echo $moestuin_id ?>">
-                                        <div class="flex relative top-[24px] ml-[8px]">
-                                            <i class="fa-solid fa-pen-to-square fa-sm"></i>
-                                            <p class="text-[12px] font-semibold relative bottom-2 ml-[4px]">Pas aan</p>
+                                        <div class="flex relative top-[40px] ml-[8px]">
+                                            <p class="text-[10px] text-white font-semibold relative bottom-2 ml-[4px]">Aanpassen</p>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="flex flex-wrap ml-[24px]">
+                                <div class="flex flex-wrap ml-[24px] max-h-[285px] overflow-y-auto mb-[12px]">
                                     <?php foreach ($plants as $plant) : ?>
                                         <a href="todo.php?id=<?php echo $plant['id'] ?>&moestuin_id=<?php echo $moestuin_id ?>">
-                                            <div class="mr-[24px] mb-[24px]">
+                                            <div class="mr-[12px] mb-[3px]">
                                                 <div class="pt-[8px]">
-                                                    <div class="h-[72px] w-[72px] bg-black flex justify-center items-center"></div>
-                                                    <p class="pt-1 text-[12px] font-medium text-white max-w-[72px] break-all text-left"><?php echo wordwrap($plant['name'], 10, '-') ?></p>
+                                                    <div class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-lg border-[#496048]"><img class="w-[55px]" src="uploads/<?php echo $plant['cover_url'] ?>" alt="<?php echo $plant['name'] ?>"></div>
                                                 </div>
                                             </div>
                                         </a>
@@ -113,7 +118,7 @@ try {
                                 </div>
                             </div>
                             <div class="flex flex-col items-center">
-                                <a class="h-[48px] text-center bg-[#81CCDE] w-[324px] md:w-[404px] lg:w-[472px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] pt-[10px]" href="dashboard.php?id=<?php echo $moestuin_id ?>&sensorID=<?php echo $sensor_id ?>">DASHBOARD</a>
+                                <a class="h-[48px] text-center bg-[#81CCDE] w-[270px] md:w-[370px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] pt-[10px]" href="dashboard.php?id=<?php echo $moestuin_id ?>&sensorID=<?php echo $sensor_id ?>">DASHBOARD</a>
                             </div>
                             </form>
                         </div>
