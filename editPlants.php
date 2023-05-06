@@ -15,7 +15,15 @@ if (isset($_SESSION['loggedin'])) {
     $user = new User();
     $user->setId($user_id);
 
-    $allPlants = Plant::getAll();
+    $searchTerm = $_GET['q'] ?? null;
+
+    if ($searchTerm != null) {
+        $state = 'search';
+    } else {
+        $state = 'all';
+    }
+
+    $allPlants = Plant::getAll($searchTerm);
 
     //if deletePlant is clicked, delete the plant from the $plants variable
     if (isset($_POST['deletePlant'])) {
@@ -82,7 +90,7 @@ if (isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-[#F5F3F3]" >
+<body class="bg-[#F5F3F3]">
     <div id="container" style="height: 100%">
         <div id="container2" class="">
             <div>
@@ -135,14 +143,18 @@ if (isset($_SESSION['loggedin'])) {
             </div>
         </div>
         <section class="flex justify-center items-center" style="height: 100%;">
-            <section id="add-section" class="hidden z-50 w-[500px]" style="height: 100%;">
-                <section class="flex justify-center items-center" style="height: 20%;" id="close"></section>
-                <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px] overflow-y-auto" style="height: 80%">
+            <section id="add-section" class="hidden z-50 w-[522px]" style="height: 100%;">
+                <section class="flex justify-center items-center" style="height: 30%;" id="close"></section>
+                <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px] overflow-y-auto" style="height: 70%">
                     <i class="fa-solid fa-arrow-left fa-lg pt-[32px] cursor-pointer" style="color: #ffffff;" id="close2"></i>
-                    <form action="" method="get">
-                        <input type="text" placeholder="Zoek plant" name="search" class="pl-[32px] font-bold w-full text-black h-[48px] rounded-[5px] text-[16px] mt-[12px]">
+                    <form action="" method="get" id="search-form" data-id="<?php echo $state ?>">
+                        <input type="hidden" name="id" value="<?php echo $moestuin_id ?>">
+                        <input type="text" placeholder="Zoek plant" name="q" class="pl-[32px] font-bold w-full text-black h-[48px] rounded-[5px] text-[16px] mt-[12px]">
                     </form>
                     <div class="flex flex-wrap justify-center mt-[32px]">
+                        <?php if (empty($allPlants)) : ?>
+                            <p class="text-white font-bold text-[18px]">Geen planten gevonden.</p>
+                        <?php endif ?>
                         <?php foreach ($allPlants as $plant) : ?>
                             <div class="mr-[24px] mb-[24px]">
                                 <form action="" method="post">
@@ -159,6 +171,39 @@ if (isset($_SESSION['loggedin'])) {
                 </section>
             </section>
         </section>
+    </div>
+    <script>
+        const addButton = document.getElementById("add");
+        const closeButton = document.getElementById("close");
+        const closeButton2 = document.getElementById("close2");
+        const form = document.getElementById("search-form");
+
+        addButton.addEventListener("click", () => {
+            const hiddenSection = document.querySelector("#add-section");
+            hiddenSection.classList.toggle("hidden");
+        });
+
+        closeButton.addEventListener("click", () => {
+            console.log("clicked");
+            const hiddenSection = document.querySelector("#add-section");
+            hiddenSection.classList.toggle("hidden");
+        });
+
+        closeButton2.addEventListener("click", () => {
+            console.log("clicked");
+            const hiddenSection = document.querySelector("#add-section");
+            hiddenSection.classList.toggle("hidden");
+        });
+
+        //get the form state
+        const formState = form.getAttribute("data-id");
+        console.log(formState);
+
+        if (formState == "search") {
+            const hiddenSection = document.querySelector("#add-section");
+            hiddenSection.classList.toggle("hidden");
+        }
+    </script>
 </body>
 
 </html>

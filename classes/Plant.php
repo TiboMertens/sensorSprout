@@ -3,9 +3,10 @@
 use SendGrid\Stats\Stats;
 
 class Plant {
-    public static function getAll(){
+    public static function getAll($searchTerm){
         $conn = Db::getInstance();
-        $statement = $conn->prepare("select * from planten");
+        $statement = $conn->prepare("select * from planten WHERE name LIKE :searchTerm");
+        $statement->bindValue(":searchTerm", '%' . $searchTerm. '%');
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;

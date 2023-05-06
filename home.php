@@ -99,7 +99,7 @@ try {
                                 </div>
                                 <div class="flex">
                                     <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[24px] ">Planten</h2>
-                                    <a href="editPlants.php?id=<?php echo $moestuin_id ?>">
+                                    <a href="editPlants.php?id=<?php echo $moestuin_id ?>&q=">
                                         <div class="flex relative top-[40px] ml-[8px]">
                                             <p class="text-[10px] text-white font-semibold relative bottom-2 ml-[4px]">Aanpassen</p>
                                         </div>
