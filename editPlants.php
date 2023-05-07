@@ -69,6 +69,12 @@ if (isset($_SESSION['loggedin'])) {
         $moestuin->delete($moestuin_id);
         header('Location: home.php');
     }
+
+    if ($details['is_serre'] == 1) {
+        $border = '#81CCDE';
+    } else {
+        $border = '#496149';
+    }
 } else {
     header('Location: login.php');
 }
@@ -97,7 +103,7 @@ if (isset($_SESSION['loggedin'])) {
             <div>
                 <h1 class="font-bold text-[26px] text-center mb-[12px]"> <?php echo htmlspecialchars($name) ?> </h1>
                 <div>
-                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#739B72] flex flex-col justify-between">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;"">
                         <div class="flex-grow-1 max-h-[400px] overflow-y-auto ml-[26px] md:ml-[18px] lg:ml-[8px]">
                             <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[24px]">Planten</h2>
                             <div class="flex flex-wrap ml-[24px]">
