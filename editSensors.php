@@ -45,7 +45,7 @@ if (isset($_SESSION['loggedin'])) {
 
     $newSensors = $_SESSION['selectedSensors'];
 
-    if (!empty($_POST['save'])) {
+    if (isset($_POST['save'])) {
         $moestuin = new Moestuin();
         $moestuin->setSensors($newSensors);
         $moestuin->addSensors($moestuin_id);
