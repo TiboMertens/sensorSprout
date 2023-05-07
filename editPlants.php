@@ -148,7 +148,7 @@ if (isset($_SESSION['loggedin'])) {
             </div>
         </div>
         <section class="flex justify-center items-center" style="height: 100%;">
-            <section id="add-section" class="hidden z-50 w-[522px]" style="height: 100%;">
+            <section id="add-section" class="hidden z-50 w-[372px] md:w-[452px] lg:w-[522px]" style="height: 100%;">
                 <section class="flex justify-center items-center" style="height: 30%;" id="close"></section>
                 <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px] overflow-y-auto" style="height: 70%">
                     <i class="fa-solid fa-arrow-left fa-lg pt-[32px] cursor-pointer" style="color: #ffffff;" id="close2"></i>

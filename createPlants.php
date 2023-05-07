@@ -3,7 +3,16 @@ include_once("bootstrap.php");
 
 if (isset($_SESSION['loggedin'])) {
     $name = $_SESSION['name'];
-    $plants = Plant::getAll();
+
+    $searchTerm = $_GET['q'] ?? null;
+
+    if ($searchTerm != null) {
+        $state = 'search';
+    } else {
+        $state = 'all';
+    }
+
+    $plants = Plant::getAll($searchTerm);
 
     // initialize the selected sensors array if it doesn't exist in the session
     if (!isset($_SESSION['selectedPlants'])) {

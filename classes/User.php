@@ -261,7 +261,7 @@ class User
     public function getSensors()
     {
         $conn = Db::getInstance();
-        $statement = $conn->prepare("SELECT sensors.name
+        $statement = $conn->prepare("SELECT sensors.*
         FROM sensors
         INNER JOIN sensor_user ON sensors.id = sensor_user.sensor_id
         WHERE sensor_user.user_id = :id;");

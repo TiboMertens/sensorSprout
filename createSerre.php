@@ -25,6 +25,7 @@ if (isset($_SESSION['loggedin'])) {
     <title>Creëer je moestuin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/create.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/c2626c7e45.js" crossorigin="anonymous"></script>
     <script src="js/create.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,16 +37,16 @@ if (isset($_SESSION['loggedin'])) {
     <div id="container" >
         <div id="container2" class="">
             <div>
-                <h1 class="font-bold text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
+                <h1 class="font-regular text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
                 <div>
-                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px]  flex flex-col justify-center items-center bg-[#808080]">
-                        <h2 class="font-semibold text-[24px] mb-3 text-white">Gebruikt u een serre?</h2>
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] flex flex-col justify-center items-center bg-[#739B72]">
+                        <h2 class="font-regular text-[24px] mb-3 text-white">Gebruikt u een serre?</h2>
                         <form action="" method="post">
                             <input type="submit" value="JA" name="btn" class="h-[48px] bg-[#81CCDE] w-[100px] md:w-[125px] lg:w-[175px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mr-3">
                             <input type="submit" value="NEE" name="btn" class="h-[48px] bg-[#81CCDE] w-[100px] md:w-[125px] lg:w-[175px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]">
                         </form>
                     </div>
-                    <p class="font-bold text-[16px] flex justify-center mt-2">2 van 4</p>
+                    <p class="font-bold text-[16px] flex justify-center mt-5">2 van 4</p>
                 </div>
             </div>
         </div>
