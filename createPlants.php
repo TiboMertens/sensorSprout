@@ -73,7 +73,7 @@ if (isset($_SESSION['loggedin'])) {
                 <h1 class="font-bold text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
                 <div>
                     <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] rounded-lg border-dashed" style="border-color: <?php echo $border ?>;">
-                        <div class="flex-grow-1 ml-[20px] md:ml-[10px] lg:ml-[0px]">
+                        <div class="flex-grow-1 max-h-[400px] overflow-y-auto ml-[20px] md:ml-[10px] lg:ml-[0px]">
                             <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[8px]" style="font-family: Yeseva One;">Geselecteerde sensoren</h2>
                             <div class="flex flex-wrap ml-[24px]">
                                 <?php foreach ($selectedSensors as $sensor) : ?>
@@ -97,7 +97,7 @@ if (isset($_SESSION['loggedin'])) {
                                         </form>
                                     </div>
                                 <?php endforeach; ?>
-                                <div class="mt-[12px]">
+                                <div class="">
                                     <div>
                                         <div class="h-[82px] w-[82px] bg-white flex justify-center border-2 rounded-lg border-[#496048] items-center cursor-pointer" id="add"><i class="fa-solid fa-plus fa-xl" style="color: #000000;"></i></div>
                                     </div>
@@ -130,7 +130,7 @@ if (isset($_SESSION['loggedin'])) {
                                 <form action="" method="post">
                                     <button type="submit" name="btn" value="<?php echo $plant['name'] ?>">
                                         <div class="pt-[8px] cursor-pointer">
-                                            <div class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-lg border-[#496048]"><img class="w-[55px]" src="uploads/<?php echo $plant['cover_url'] ?>" alt="<?php echo $plant['name'] ?>"></div>
+                                            <div id="addPlant" data-id="<?php $clicked ?>" class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-lg border-[#496048]"><img class="w-[55px]" src="uploads/<?php echo $plant['cover_url'] ?>" alt="<?php echo $plant['name'] ?>"></div>
                                         </div>
                                     </button>
                                 </form>
@@ -143,6 +143,7 @@ if (isset($_SESSION['loggedin'])) {
     </div>
     <script>
         const addButton = document.getElementById("add");
+        const addPlant = document.getElementById("addPlant");
         const closeButton = document.getElementById("close");
         const closeButton2 = document.getElementById("close2");
         const form = document.getElementById("search-form");
@@ -166,9 +167,8 @@ if (isset($_SESSION['loggedin'])) {
 
         //get the form state
         const formState = form.getAttribute("data-id");
-        console.log(formState);
 
-        if (formState == "search") {
+        if (formState == "search" && state != "active") {
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         }
