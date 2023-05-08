@@ -107,7 +107,7 @@ if (isset($_SESSION['loggedin'])) {
                                 <form action="" method="post">
                                     <button type="submit" name="btn" value="<?php echo $sensor['short_name'] ?>">
                                         <div class="pt-[8px] cursor-pointer">
-                                            <div class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-lg border-[#496048]">
+                                            <div id="addProduct" data-id="<?php echo $clicked ?>" class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-lg border-[#496048]">
                                                 <p><?php echo $sensor['short_name'] ?></p>
                                             </div>
                                         </div>
@@ -129,7 +129,7 @@ if (isset($_SESSION['loggedin'])) {
         </section>
     </div>
     <script>
-        const addButton = document.getElementById("add");
+        const addButton = document.getElementById("addProduct");
         const closeButton = document.getElementById("close");
         const closeButton2 = document.getElementById("close2");
         const form = document.getElementById("search-form");
@@ -154,8 +154,13 @@ if (isset($_SESSION['loggedin'])) {
         //get the form state
         const formState = form.getAttribute("data-id");
         console.log(formState);
-
+        
         if (formState == "search") {
+            const hiddenSection = document.querySelector("#add-section");
+            hiddenSection.classList.toggle("hidden");
+        }
+
+        if (state == "clicked") {
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         }

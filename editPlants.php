@@ -164,7 +164,7 @@ if (isset($_SESSION['loggedin'])) {
                             <form action="" method="post">
                                 <button type="submit" name="btn" value="<?php echo $plant['name'] ?>">
                                     <div class="pt-[8px] cursor-pointer">
-                                        <div class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-lg border-[#496048]"><img class="w-[55px]" src="uploads/<?php echo $plant['cover_url'] ?>" alt="<?php echo $plant['name'] ?>"></div>
+                                        <div id="addProduct" data-id="<?php echo $clicked ?>" class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-lg border-[#496048]"><img class="w-[55px]" src="uploads/<?php echo $plant['cover_url'] ?>" alt="<?php echo $plant['name'] ?>"></div>
                                     </div>
                                 </button>
                             </form>
@@ -177,9 +177,12 @@ if (isset($_SESSION['loggedin'])) {
     </div>
     <script>
         const addButton = document.getElementById("add");
+        const add = document.getElementById("addProduct");
         const closeButton = document.getElementById("close");
         const closeButton2 = document.getElementById("close2");
         const form = document.getElementById("search-form");
+
+        let state = add.getAttribute("data-id");
 
         addButton.addEventListener("click", () => {
             const hiddenSection = document.querySelector("#add-section");
@@ -203,6 +206,11 @@ if (isset($_SESSION['loggedin'])) {
         console.log(formState);
 
         if (formState == "search") {
+            const hiddenSection = document.querySelector("#add-section");
+            hiddenSection.classList.toggle("hidden");
+        }
+
+        if (state == "clicked") {
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         }
