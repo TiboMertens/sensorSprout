@@ -61,7 +61,7 @@ if (isset($_SESSION['loggedin'])) {
         </div>
     </section>
     <form action="" method="post" class="flex flex-col items-center">
-        <input type="submit" value="OVERZICHT BETALING" name="volgende" id="name" class="h-[48px] bg-[#81CCDE] w-[460px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
+        <input type="submit" value="WINKELMAND" name="volgende" id="name" class="h-[48px] bg-[#81CCDE] w-[460px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
     </form>
 </body>
 
