@@ -66,6 +66,10 @@ if (isset($_SESSION['loggedin'])) {
     } else {
         $border = '#496149';
     }
+
+    if (!empty($_POST['koop'])) {
+        header('Location: shop.php');
+    }
 } else {
     header('Location: login.php');
 }
@@ -134,7 +138,7 @@ if (isset($_SESSION['loggedin'])) {
 
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
-                            <button name="save" class="h-[48px] text-center bg-[#81CCDE] mt-[20px] w-[270px] md:w-[365px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] pt-[10px]" href="home.php?id=<?php echo $moestuin_id ?>">GEREED</button>
+                            <button name="save" class="h-[48px] text-center bg-[#81CCDE] mt-[20px] w-[270px] md:w-[365px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] pt-[4px]" href="home.php?id=<?php echo $moestuin_id ?>">GEREED</button>
                             <button name="delete" class="text-white font-semibold mt-[12px] mb-[20px] text-[12px]">Verwijder moestuin</button>
                         </form>
                     </div>
