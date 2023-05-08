@@ -53,12 +53,12 @@ if (isset($_SESSION['loggedin'])) {
     <?php else : ?>
         <main class="ml-auto mr-auto max-w-[500px] md:flex md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1100px]">
             <div class="m-5 md:mt-[60px] lg:mt-5 pt-[70px]">
-                <div class=""><img src="<?php echo htmlspecialchars($cover_url); ?>" alt="prompt cover" class="rounded-md max-h-[600px] xl:max-h-[500px] xl:w-[700px]"></div>
+                <div class="flex justify-center items-center h-[200px]"><img src="uploads/<?php echo htmlspecialchars($cover_url); ?>" alt="prompt cover" class="rounded-md w-[150px]"></div>
                 <div class="text-[#cccccc] text-[14px] lg:text-[16px]">
                     <h1 class="text-[32px] lg:text-[36px] text-black font-bold mt-2 mb-3"><?php echo htmlspecialchars($title); ?></h1>
                     <form action="#" method="post" class="flex gap-[24px]">
-                        <input type="submit" value="BESCHRIJVING" name="description" id="desc" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
-                        <input type="submit" value="SENSOREN" name="sensors" id="sensors" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
+                        <input type="submit" value="BESCHRIJVING" name="description" id="desc" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] cursor-pointer">
+                        <input type="submit" value="SENSOREN" name="sensors" id="sensors" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] cursor-pointer">
                     </form>
                     <?php if ($currentFilter == 'description') : ?>
                         <div class="relative">
@@ -76,7 +76,9 @@ if (isset($_SESSION['loggedin'])) {
                                 <h2 class="font-bold text-black text-[22px] mb-2">Sensors</h2>
                                 <?php foreach ($sensorDetails as $sensor) : ?>
                                     <div class="flex">
-                                        <img src="<?php echo htmlspecialchars($sensor['cover_url']); ?>" alt="prompt cover" class="rounded-md w-[150px] h-[150px]">
+                                        <div class="w-[120px] h-[120px] flex justify-center items-center">
+                                            <img src="uploads/<?php echo htmlspecialchars($sensor['cover_url']); ?>" alt="prompt cover" class="rounded-md">
+                                        </div>
                                         <div class="max-w-[300px]">
                                             <p class="font-bold text-black"><?php echo htmlspecialchars($sensor['name']); ?></p>
                                             <div class="description">
@@ -89,12 +91,12 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                         </div>
                         <div>
-                            <h3>Price: &nbsp; € <?php echo htmlspecialchars($price) ?></h3>
+                            <h3 class="text-black">Price: &nbsp; € <?php echo htmlspecialchars($price) ?></h3>
                         </div>
                     <?php endif ?>
                     <div>
                         <form action="" method="post">
-                            <input type="submit" value="TOEVOEGEN" name="add" id="add" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
+                            <input type="submit" value="TOEVOEGEN" name="add" id="add" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] mt-[12px]">
                         </form>
                     </div>
                 </div>
