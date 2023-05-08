@@ -39,7 +39,7 @@ if (isset($_SESSION['loggedin'])) {
             <div>
                 <h1 class="font-regular text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
                 <div>
-                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] flex flex-col justify-center items-center bg-[#739B72]">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] flex flex-col justify-center items-center rounded-lg bg-[#739B72]">
                         <h2 class="font-regular text-[24px] mb-3 text-white">Gebruikt u een serre?</h2>
                         <form action="" method="post">
                             <input type="submit" value="JA" name="btn" class="h-[48px] bg-[#81CCDE] w-[100px] md:w-[125px] lg:w-[175px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mr-3">

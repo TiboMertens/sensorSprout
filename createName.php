@@ -42,7 +42,7 @@ if (isset($_SESSION['loggedin'])) {
         <div id="container2" class="">
             <div>
                 <div>
-                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] flex flex-col justify-center items-center bg-[#739B72]">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] flex flex-col justify-center items-center rounded-lg bg-[#739B72]">
                         <form action="" method="post">
                             <label for="name" class="text-white flex text-left ">
                                 Hoe wilt u uw moestuin noemen?

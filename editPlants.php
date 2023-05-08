@@ -103,7 +103,7 @@ if (isset($_SESSION['loggedin'])) {
             <div>
                 <h1 class="font-bold text-[26px] text-center mb-[12px]"> <?php echo htmlspecialchars($name) ?> </h1>
                 <div>
-                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;"">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] rounded-lg border-dashed" style="border-color: <?php echo $border ?>;"">
                         <div class=" flex-grow-1 max-h-[400px] overflow-y-auto ml-[18px] md:ml-[18px] lg:ml-[8px]">
                         <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[24px]">Planten</h2>
                         <div class="flex flex-wrap ml-[24px]">
@@ -137,7 +137,6 @@ if (isset($_SESSION['loggedin'])) {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <form action="" method="post" class="flex flex-col items-center">
                         <button name="save" class="h-[48px] text-center bg-[#81CCDE] mt-[20px] w-[270px] md:w-[365px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] pt-[4px]" href="home.php?id=<?php echo $moestuin_id ?>">GEREED</button>

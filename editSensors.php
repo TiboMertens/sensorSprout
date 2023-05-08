@@ -93,9 +93,9 @@ if (isset($_SESSION['loggedin'])) {
             <div>
                 <h1 class="font-regular text-[26px] mb-2 text-center"> <?php echo htmlspecialchars($name) ?> </h1>
                 <div>
-                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;">
+                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] rounded-lg border-dashed" style="border-color: <?php echo $border ?>;">
                         <div class="flex-grow-1 max-h-[400px] overflow-y-auto ml-[18px] md:ml-[18px] lg:ml-[8px]">
-                            <h2 class="font-bold text-[20px] text-white ml-[24px] mt-[12px] mb-[12px]">Sensoren</h2>
+                            <h2 class="font-regular text-[20px] text-white ml-[24px] mt-[12px] mb-[12px]">Sensoren</h2>
                             <div class="flex flex-wrap ml-[24px]">
                                 <?php foreach ($sensors as $sensor) : ?>
                                     <div class="mr-[12px]">
