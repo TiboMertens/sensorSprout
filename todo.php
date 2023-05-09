@@ -135,7 +135,8 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
-    <section class="max-w-[1024px] mx-auto sm:mt-[70px]">
+    <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
+    <section class="max-w-[1024px] mx-auto sm:mt-[70px] mt-[32px]">
         <div class="flex items-center justify-center">
             <a href="home.php?id=<?php echo $moestuin_id ?>"><i class="fa-solid fa-arrow-left fa-xl mr-2"></i></a>
             <h1 class="text-center my-[42px] text-[26px] lg:text-[28px] font-semibold"><?php echo $currentPlant['name'] ?></h1>
@@ -157,6 +158,7 @@ if (isset($_SESSION['loggedin'])) {
             </section>
         </div>
     </section>
+    <script src="js/hamburger.js"></script>
 </body>
 
 </html>

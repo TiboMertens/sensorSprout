@@ -156,7 +156,7 @@ if (isset($_SESSION['loggedin'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Data</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/c2626c7e45.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
@@ -167,10 +167,11 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
-    <section class="max-w-[1024px] mx-auto sm:mt-[70px]">
+    <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
+    <section class="max-w-[1024px] mx-auto sm:mt-[70px] mt-[32px]">
         <div class="flex items-center justify-center">
             <a href="home.php?id=<?php echo $moestuin_id ?>"><i class="fa-solid fa-arrow-left fa-xl mr-2"></i></a>
-            <h1 class="text-center my-[42px] text-[26px] lg:text-[28px] font-semibold">Dashboard</h1>
+            <h1 class="text-center my-[42px] text-[26px] lg:text-[28px] font-semibold">Data</h1>
         </div>
         <div class="flex sm:justify-center">
             <?php foreach ($sensors as $sensor) : ?>
@@ -271,6 +272,7 @@ if (isset($_SESSION['loggedin'])) {
             </div>
         </section>
     </section>
+    <script src="js/hamburger.js"></script>
     <script>
         const ctx = document.getElementById('myChart');
         // get data from canvas

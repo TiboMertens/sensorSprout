@@ -28,7 +28,8 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body class="bg-[#F7F7F7]">
-    <div class="flex items-center justify-center">
+    <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
+    <div class="flex items-center justify-center mt-[32px]">
         <a href="home.php?id=<?php echo $moestuin_id ?>"><i class="fa-solid fa-arrow-left fa-xl mr-2"></i></a>
         <h1 class="text-center my-[36px] text-[26px] lg:text-[28px] font-semibold">Winkel</h1>
     </div>
@@ -65,6 +66,7 @@ if (isset($_SESSION['loggedin'])) {
     <form action="" method="post" class="flex flex-col items-center">
         <input type="submit" value="WINKELMAND" name="volgende" id="name" class="h-[48px] bg-[#81CCDE] w-[430px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px]">
     </form>
+    <script src="js/hamburger.js"></script>
 </body>
 
 </html>

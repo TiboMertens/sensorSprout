@@ -45,13 +45,14 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body>
+    <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
     <?php if (isset($error)) : ?>
         <div class="flex flex-col items-center justify-center h-screen">
             <h1 class="text-center text-[26px] font-bold text-black"><?php echo $error ?></h1>
             <a class="mt-4 text-blue-500 hover:text-blue-700" href="index.php">Go to homepage</a>
         </div>
     <?php else : ?>
-        <main class="ml-auto mr-auto max-w-[500px] md:flex md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1100px]">
+        <main class="ml-auto mr-auto max-w-[500px] md:flex md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1100px] mt-[32px]">
             <div class="m-5 md:mt-[60px] lg:mt-5 pt-[70px]">
                 <div class="flex justify-center items-center h-[200px]"><img src="uploads/<?php echo htmlspecialchars($cover_url); ?>" alt="prompt cover" class="rounded-md w-[150px]"></div>
                 <div class="text-[#cccccc] text-[14px] lg:text-[16px]">
@@ -103,7 +104,7 @@ if (isset($_SESSION['loggedin'])) {
             </div>
         </main>
     <?php endif ?>
-
+    <script src="js/hamburger.js"></script>
     <script>
         function toggleDescription(event) {
             const button = event.target;

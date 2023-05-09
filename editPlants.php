@@ -98,12 +98,15 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body class="bg-[#F5F3F3]">
-    <div id="container" style="height: 100%">
+    <div class="mb-[32px]">
+        <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
+    </div>
+    <div id="container" class="mt-[32px]" style="height: 100%">
         <div id="container2" class="">
             <div>
-                <h1 class="font-bold text-[26px] text-center mb-[12px]"> <?php echo htmlspecialchars($name) ?> </h1>
+                <h1 class="font-bold text-[26px] text-center mb-[12px] mt-[32px]"> <?php echo htmlspecialchars($name) ?> </h1>
                 <div>
-                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] rounded-lg border-dashed" style="border-color: <?php echo $border ?>;"">
+                    <div class="w-[372px] md:w-[452px] lg:w-[822px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] rounded-lg border-dashed" style="border-color: <?php echo $border ?>;"">
                         <div class=" flex-grow-1 max-h-[400px] overflow-y-auto ml-[18px] md:ml-[18px] lg:ml-[8px]">
                         <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[24px]">Planten</h2>
                         <div class="flex flex-wrap ml-[24px]">
@@ -147,7 +150,7 @@ if (isset($_SESSION['loggedin'])) {
         </div>
     </div>
     <section class="flex justify-center items-center" style="height: 100%;">
-        <section id="add-section" class="hidden z-50 w-[372px] md:w-[452px] lg:w-[522px]" style="height: 100%;">
+        <section id="add-section" class="hidden z-30 w-[372px] md:w-[452px] lg:w-[822px]" style="height: 100%;">
             <section class="flex justify-center items-center" style="height: 30%;" id="close"></section>
             <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px] overflow-y-auto" style="height: 70%">
                 <i class="fa-solid fa-arrow-left fa-lg pt-[32px] cursor-pointer" style="color: #ffffff;" id="close2"></i>
@@ -175,6 +178,7 @@ if (isset($_SESSION['loggedin'])) {
         </section>
     </section>
     </div>
+    <script src="js/hamburger.js"></script>
     <script>
         const addButton = document.getElementById("add");
         const add = document.getElementById("addProduct");

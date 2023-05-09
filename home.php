@@ -43,17 +43,27 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="css/normalize.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/c2626c7e45.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/create.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
+<style>
+    .rotate {
+        transform: rotate(90deg);
+        position: relative;
+        top: 10px;
+        right: 6px;
+    }
+</style>
+
 <body class="bg-[#F5F3F3]">
-    <div id="container" class="bg-[#F5F3F3] flex justify-center items-center">
+    <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
+    <div id="container" class="bg-[#F5F3F3] flex justify-center items-center mt-[32px]">
         <?php if (isset($error)) : ?>
             <div class="error text-center">
                 <p><?php echo $error ?></p>
@@ -62,7 +72,7 @@ try {
         <?php else : ?>
             <div class="">
                 <div>
-                    <div class="flex w-[372px] md:w-[452px] lg:w-[522px] justify-between items-center mb-[12px]">
+                    <div class="flex w-[372px] md:w-[452px] lg:w-[822px] justify-between items-center mb-[12px]">
                         <div>
                             <a href="home.php?id=<?php echo $moestuin_id - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px]"></i></a>
                         </div>
@@ -74,7 +84,7 @@ try {
                         </div>
                     </div>
                     <div>
-                        <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] rounded-lg bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;">
+                        <div class="w-[372px] md:w-[452px] lg:w-[822px] h-[520px] rounded-lg bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;">
                             <div class="flex-grow-1 ml-[20px] md:ml-[10px] lg:ml-[0px]">
                                 <div class="flex">
                                     <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[20px]">Sensoren</h2>
@@ -128,6 +138,7 @@ try {
             </div>
         <?php endif ?>
     </div>
+    <script src="js/hamburger.js"></script>
 </body>
 
 </html>

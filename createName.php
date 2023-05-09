@@ -38,11 +38,12 @@ if (isset($_SESSION['loggedin'])) {
 </head>
 
 <body class="bg-[#F5F3F3]">
-    <div id="container" class="bg-[#F5F3F3]">
+    <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
+    <div id="container" class="bg-[#F5F3F3] mt-[32px] flex justify-center items-center">
         <div id="container2" class="">
             <div>
                 <div>
-                    <div class="w-[372px] md:w-[452px] lg:w-[522px] h-[520px] flex flex-col justify-center items-center rounded-lg bg-[#739B72]">
+                    <div class="w-[372px] md:w-[452px] lg:w-[822px] h-[520px] flex flex-col justify-center items-center rounded-lg bg-[#739B72]">
                         <form action="" method="post">
                             <label for="name" class="text-white flex text-left ">
                                 Hoe wilt u uw moestuin noemen?
@@ -60,6 +61,7 @@ if (isset($_SESSION['loggedin'])) {
             </div>
         </div>
     </div>
+    <script src="js/hamburger.js"></script>
 </body>
 
 </html>
