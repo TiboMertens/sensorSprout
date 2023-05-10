@@ -21,8 +21,32 @@ if (isset($_SESSION['loggedin'])) {
 
     // add the clicked button value to the selected sensors array
     if (isset($_POST['btn'])) {
-        array_push($_SESSION['selectedPlants'], $_POST['btn']);
+        if ($_SESSION['serre'] == 0) {
+            array_push($_SESSION['selectedPlants'], $_POST['btn']);
+            $clicked = 'clicked';
+            //select the plant with the name from the btn post
+            $plantCheck = Plant::getPlant($_POST['btn']);
+            if ($plantCheck['serre'] == 1) {
+                $notSerre = true;
+            }
+        } else {
+            array_push($_SESSION['selectedPlants'], $_POST['btn']);
+            $clicked = 'clicked';
+        }
+    }
+
+    if (isset($_POST['dontPlant'])) {
+        //delete the most recent item
+        array_pop($_SESSION['selectedPlants']);
+        $notSerre = false;
+        //empty the $_POST dontPlant
+        $_POST['dontPlant'] = '';
+    }
+    if (isset($_POST['doPlant'])) {
         $clicked = 'clicked';
+        $notSerre = false;
+        //empty the $_POST doPlant
+        $_POST['doPlant'] = '';
     }
 
     // get the current contents of the selected sensors array
@@ -143,6 +167,20 @@ if (isset($_SESSION['loggedin'])) {
                 </section>
             </section>
         </section>
+        <?php if ($notSerre == true) : ?>
+            <div id="emptyPopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+                <div class="bg-[#E9E9E9] p-8 rounded shadow-md text-center w-[30%]">
+                    <form action="" method="post" class="">
+                        <h2 class="text-lg font-bold mb-4 text-black">We raden aan een serre te gebruiken voor deze plant.</h2>
+                        <!-- add close button -->
+                        <div class="flex gap-5">
+                            <button name="dontPlant" class="closePopup bg-[#81CCDE] hover:bg-[#75c4d8] text-white font-bold py-2 w-full rounded mb-2">Niet planten</button>
+                            <button name="doPlant" class="closePopup bg-[#81CCDE] hover:bg-[#75c4d8] text-white font-bold py-2 w-full rounded mb-2">Toch planten</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        <?php endif ?>
     </div>
     <script src="js/hamburger.js"></script>
     <script>

@@ -22,9 +22,19 @@ if (isset($_SESSION['loggedin'])) {
     $selectedSensors = $_SESSION['selectedSensors'];
 
     if (!empty($_POST['volgende'])) {
-        header('Location: createPlants.php');
-        exit;
+        if (empty($selectedSensors)) {
+            $empty = true;
+        } else {
+            header('Location: createPlants.php');
+            exit;
+        }
     }
+
+    if (!empty($_POST['closePopup'])) {
+        //empty the $_POST volgende
+        $_POST['volgende'] = '';
+        $empty = false;
+    } 
 
     if (isset($_POST['koop'])) {
         header('Location: winkel.php');
@@ -127,6 +137,19 @@ if (isset($_SESSION['loggedin'])) {
                 </section>
             </section>
         </section>
+        <?php if ($empty == true): ?>
+            <div id="emptyPopup" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div class="bg-[#E9E9E9] p-8 rounded shadow-md text-center w-[20%]">
+                <form action="" method="post" class="">
+                    <h2 class="text-lg font-bold mb-4 text-black">Zonder sensoren kunt u de app niet gebruiken.</h2>
+                    <!-- add close button -->
+                    <div class="flex gap-5">
+                        <button name="closePopup" class="closePopup bg-[#81CCDE] hover:bg-[#75c4d8] text-white font-bold py-2 w-full rounded mb-2">Oke</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <?php endif ?>
     </div>
     <script>
         //get element w id addProduct

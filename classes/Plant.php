@@ -20,4 +20,13 @@ class Plant {
         $result = $statement->fetch(PDO::FETCH_ASSOC);
         return $result;
     }
+
+    public static function getPlant($plantName){
+        $conn = Db::getInstance();
+        $statement = $conn->prepare("select * from planten where name = :plantName");
+        $statement->bindValue(":plantName", $plantName);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
 }
