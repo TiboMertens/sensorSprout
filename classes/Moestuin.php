@@ -274,6 +274,17 @@ class Moestuin
         return $result;
     }
 
+    public static function getLastUpdate($moestuin_id, $sensor_id)
+    {
+        $conn = DB::getInstance();
+        $statement = $conn->prepare("SELECT date_time FROM readings WHERE moestuin_id = :moestuin_id AND sensor_id = :sensor_id ORDER BY date_time DESC LIMIT 1");
+        $statement->bindValue(":moestuin_id", $moestuin_id);
+        $statement->bindValue(":sensor_id", $sensor_id);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     public static function getAvg($date, $id)
     {
         //get the average of the data from the current day
@@ -286,13 +297,21 @@ class Moestuin
         return $result;
     }
 
-    public static function getLastUpdate($moestuin_id, $sensor_id){
-        $conn = DB::getInstance();
-        $statement = $conn->prepare("SELECT date_time FROM readings WHERE moestuin_id = :moestuin_id AND sensor_id = :sensor_id ORDER BY date_time DESC LIMIT 1");
-        $statement->bindValue(":moestuin_id", $moestuin_id);
-        $statement->bindValue(":sensor_id", $sensor_id);
-        $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-        return $result;
+    public static function getLichtUren($moestuin_id, $date)
+    {
+        $conn = Db::getInstance();
+        //for every hour of today, get the average of the data
+        $stmt = $conn->prepare("SELECT DATE_FORMAT(date_time, '%Y-%m-%d %H:00:00') as hour_start,
+        AVG(data) as average_data
+        FROM readings
+        WHERE DATE(date_time) = :date AND sensor_id = :id AND moestuin_id = :moestuin_id
+        GROUP BY hour_start
+        ORDER BY hour_start ASC; 
+        ");
+        $stmt->bindValue(':moestuin_id', $moestuin_id, PDO::PARAM_INT);
+        $stmt->bindValue(':date', $date, PDO::PARAM_STR);
+        $stmt->bindValue(':id', 3, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

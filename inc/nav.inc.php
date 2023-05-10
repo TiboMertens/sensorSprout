@@ -1,9 +1,9 @@
 <div style="width: 100vw;">
-    <nav class="w-full h-[64px] flex justify-between items-center">
+    <nav class="w-full h-[64px] flex justify-between items-center bg-[#292929]">
         <div class="flex justify-start ml-5 relative top-[2px]">
             <a href="home.php"><img src="uploads/logo.svg" alt="logo"></a>
         </div>
-        <div class="flex justify-end mr-5 font-bold text-[#A5CF93] md:block hidden">
+        <div class="flex justify-end mr-5 font-bold text-[#A5CF93] text-white md:block hidden">
             <a href="home.php" class="mr-7 text-[20px]" style="font-family: Lato;">Moestuin</a>
             <a href="#" class="mr-7 text-[20px]" style="font-family: Lato;">Klimaat</a>
             <a href="shop.php" class="mr-7 text-[20px]" style="font-family: Lato;">Winkel</a>

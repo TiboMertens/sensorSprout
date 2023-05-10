@@ -265,7 +265,7 @@ if (isset($_SESSION['loggedin'])) {
                 </div>
             </div>
             <div class="sm:w-1/2">
-                <h3 class="text-[20px] lg:text-[24px] text-black p-0 ml-5 mb-[16px] mt-[36px] sm:mt-[24px]">Weekoverzicht</h3>
+                <h3 class="text-[20px] lg:text-[24px] text-black p-0 mb-[16px] mt-[36px] sm:mt-[24px] ml-0">Weekoverzicht</h3>
                 <div class="mx-5 sm:mx-0 h-[350px] w-[460px] sm:max-w-[640px]">
                     <canvas class="px-5 py-2 rounded-md bg-[#E9E9E9]" id="myChart" data-dates="<?php echo htmlspecialchars(json_encode($dates)) ?>" data-avg="<?php echo htmlspecialchars(json_encode($avg)) ?>"></canvas>
                 </div>
