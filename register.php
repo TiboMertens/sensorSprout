@@ -12,13 +12,18 @@ try {
         if (!empty($_POST)) {
                 if (!empty($_POST['terms'])) {
                     $user = new User();
-                    $user->setSensor($sensor);
+                    if (!empty($sensor)) {
+                        $user->setSensor($sensor);
+                    }
                     $user->setUsername($_POST['username']);
                     $user->setEmail($_POST['email']);
                     $user->setPassword($_POST['password']);
                     $user->save();
-        
-                    header("Location: create.php");
+                    session_start();
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['id'] = $user->getId($_POST['username']);
+
+                    header("Location: createName.php");
                 } else {
                     throw new Exception("Je moet de gebruikersvoorwaarden accepteren.");
                 }

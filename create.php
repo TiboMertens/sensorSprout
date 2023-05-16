@@ -28,7 +28,7 @@ if (!isset($_SESSION['loggedin'])) {
     <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
     <div id="container" class="bg-[#F5F3F3] mt-[32px]">
         <div id="container2">
-            <a href="createName.php"><input type="submit" id="create" value="CREËER UW MOESTUIN" class="h-[48px] bg-[#81CCDE] w-[342px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]"></a>
+            <a class="justify-center items-center" href="createName.php"><input type="submit" id="create" value="CREËER UW MOESTUIN" class="h-[48px] bg-[#81CCDE] w-[342px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]"></a>
         </div>
     </div>
     <script src="js/hamburger.js"></script>
