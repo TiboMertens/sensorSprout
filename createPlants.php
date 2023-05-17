@@ -5,6 +5,7 @@ if (isset($_SESSION['loggedin'])) {
     $name = $_SESSION['name'];
 
     $searchTerm = $_GET['q'] ?? null;
+    $notSerre = false;
 
     if ($searchTerm != null) {
         $state = 'search';
@@ -97,7 +98,7 @@ if (isset($_SESSION['loggedin'])) {
     <div id="container" class="mt-[32px]" style="height: 100%">
         <div id="container2" class="">
             <div>
-                <h1 class="font-bold text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
+                <h1 class="font-bold text-[26px] mb-2 mt-[100px]"><?php echo htmlspecialchars($name) ?></h1>
                 <div>
                     <div class="w-[372px] md:w-[452px] lg:w-[822px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] rounded-lg border-dashed" style="border-color: <?php echo $border ?>;">
                         <div class="flex-grow-1 max-h-[400px] overflow-y-auto ml-[20px] md:ml-[10px] lg:ml-[0px]">
@@ -148,7 +149,7 @@ if (isset($_SESSION['loggedin'])) {
                         <input type="hidden" name="id" value="<?php echo $moestuin_id ?>">
                         <input type="text" placeholder="Zoek plant" name="q" class="pl-[32px] font-bold w-full text-black h-[48px] rounded-[5px] text-[16px] mt-[12px]">
                     </form>
-                    <div class="flex flex-wrap justify-center mt-[32px]">
+                    <div class="flex flex-wrap justify-center mt-[32px] pb-[300px]">
                         <?php if (empty($plants)) : ?>
                             <p class="text-white font-bold text-[18px]">Geen planten gevonden.</p>
                         <?php endif ?>
