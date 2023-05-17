@@ -311,7 +311,6 @@ try {
                                 </div>
                             </div>
                             <div class="flex flex-col items-center">
-                                <a class="h-[48px] text-center bg-[#81CCDE] mt-[20px] w-[270px] md:w-[370px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] pt-[10px]" href="dashboard.php?id=<?php echo $moestuin_id ?>&sensorID=<?php echo $sensor_id ?>">DATA</a>
                                 <a class="text-white font-semibold mt-[12px] mb-[20px] text-[12px]" href="createName.php">MOESTUIN TOEVOEGEN</a>
                             </div>
                             </form>
