@@ -364,7 +364,7 @@ try {
             <h2 class="text-[22px] lg:text-[26px] text-black ml-5 mt-[16px] sm:text-center"><?php echo $currentSensor ?></h2>
             <section class="sm:flex">
                 <div class="sm:w-1/2">
-                    <h3 class="text-[20px] lg:text-[24px] text-black ml-5 mt-[24px] mb-[16px]">Live data <span class="text-[12px]" style="font-family: Lato;">Laatste update: &nbsp;<?php echo $sensorTime; ?></span></h3>
+                    <h3 data-update="<?php echo $lastUpdate ?>" data-sensor="<?php echo $sensor_id ?>" data-moestuin="<?php echo $moestuin_id ?>" id="time" class="text-[20px] lg:text-[24px] text-black ml-5 mt-[24px] mb-[16px]">Live data <span class="text-[12px]" style="font-family: Lato;">Laatste update: &nbsp;<?php echo $sensorTime; ?></span></h3>
                     <?php if ($currentSensor == "Temperatuursensor") {
                         if ($TemperatuursensorStatus === 'bad') {
                             $divColor = '#FF0000';
@@ -534,6 +534,35 @@ try {
                 }
             });
         }
+    </script>
+    <script>
+        // select the element with the id time 
+        const time = document.querySelector('#time');
+
+        //every 5 seconds, call an anonymous function
+        setInterval(function() {
+            const update = time.getAttribute('data-update');
+            const moestuin_id = time.getAttribute('data-moestuin_id');
+            const sensor_id = time.getAttribute('data-sensor_id');
+            // get the state of the follow button
+            console.log(update);
+
+            let formData = new FormData();
+            formData.append("time", update);
+            formData.append("moestuin_id", moestuin_id);
+            formData.append("sensor_id", sensor_id);
+            fetch("ajax/time.php", {
+                    method: "POST",
+                    body: formData,
+                })
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(json) {
+                    console.log(json);
+
+                });
+        }, 5000);
     </script>
     <script src="js/hamburger.js"></script>
 </body>
