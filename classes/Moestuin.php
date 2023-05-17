@@ -118,7 +118,7 @@ class Moestuin
         $moestuinId = $conn->lastInsertId();
         foreach ($this->getSensors() as $sensor) {
             //get the name of the sensor
-            $statement = $conn->prepare("select id from sensors where name = :name");
+            $statement = $conn->prepare("select id from sensors where short_name = :name");
             $statement->bindValue(":name", $sensor);
             $statement->execute();
             $sensorID = $statement->fetch();
