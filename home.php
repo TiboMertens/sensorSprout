@@ -247,7 +247,7 @@ try {
     }
 </style>
 
-<body class="bg-[#F5F3F3]">
+<body class="bg-[#F7F7F7]">
     <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
     <section id="refresh" class="hidden fixed top-0 w-full justify-center mt-[86px]">
         <div>
@@ -258,199 +258,205 @@ try {
             </form>
         </div>
     </section>
-    <div id="container" class="bg-[#F5F3F3] flex justify-center items-center mt-[32px]">
-        <?php if (isset($error)) : ?>
-            <div class="error text-center">
-                <p><?php echo $error ?></p>
-                <a href="home.php">Ga terug</a>
-            </div>
-        <?php else : ?>
-            <div class="">
-                <div>
-                    <div class="flex w-[372px] md:w-[452px] lg:w-[822px] justify-between items-center mb-[12px]">
-                        <div>
-                            <a href="home.php?id=<?php echo $moestuin_id - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px]"></i></a>
-                        </div>
-                        <div>
-                            <h1 class="font-bold text-[26px] mb-2 text-center"> <?php echo htmlspecialchars($name) ?> </h1>
-                        </div>
-                        <div>
-                            <a href="home.php?id=<?php echo $moestuin_id + 1 ?>"><i class="fa-solid fa-arrow-right fa-xl ml-[0px]"></i></a>
-                        </div>
-                    </div>
+    <div class="xl:flex">
+        <div id="container" class="bg-[#23232] flex justify-center items-center mt-[32px] xl:mt-[4px] xl:w-1/2">
+            <?php if (isset($error)) : ?>
+                <div class="error text-center">
+                    <p><?php echo $error ?></p>
+                    <a href="home.php">Ga terug</a>
+                </div>
+            <?php else : ?>
+                <div class="p xl:h-[610px]">
                     <div>
-                        <div class="w-[372px] md:w-[452px] lg:w-[822px] h-[520px] rounded-lg bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;">
-                            <div class="flex-grow-1 ml-[20px] md:ml-[10px] lg:ml-[0px]">
-                                <div class="flex">
-                                    <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[20px]">Sensoren</h2>
-                                    <a href="editSensors.php?id=<?php echo $moestuin_id ?>">
-                                        <div class="flex relative top-[35px] ml-[8px]">
-                                            <p class="text-[10px] text-white font-semibold relative bottom-2 ml-[4px]">Aanpassen</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="flex flex-wrap ml-[24px]">
-                                    <?php foreach ($sensors as $sensor) : ?>
-                                        <div class="mr-[12px]">
-                                            <form action="" method="post">
-                                                <div class="pt-[8px]">
-                                                    <div class="h-[32px] w-[32px] bg-[#5C7C5B] rounded-md border-2 border-[#496048] flex justify-center items-center">
-                                                        <p class="text-[14px]" style="font-family: Yeseva One;"><?php echo $sensor['short_name'] ?></p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                                <div class="flex">
-                                    <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[24px] ">Planten</h2>
-                                    <a href="editPlants.php?id=<?php echo $moestuin_id ?>&q=">
-                                        <div class="flex relative top-[40px] ml-[8px]">
-                                            <p class="text-[10px] text-white font-semibold relative bottom-2 ml-[4px]">Aanpassen</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="flex flex-wrap ml-[24px] max-h-[260px] overflow-y-auto">
-                                    <?php foreach ($plants as $plant) : ?>
-                                        <a href="todo.php?id=<?php echo $plant['id'] ?>&moestuin_id=<?php echo $moestuin_id ?>">
-                                            <div class="mr-[12px] mb-[3px]">
-                                                <div class="pt-[8px]">
-                                                    <div class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-lg border-[#496048]"><img class="w-[55px]" src="uploads/<?php echo $plant['cover_url'] ?>" alt="<?php echo $plant['name'] ?>"></div>
-                                                </div>
+                        <div class="flex w-[372px] md:w-[452px] xl:w-[615px] justify-between items-center mb-[12px] xl:mb-[32px] xl:mt-[12px]">
+                            <div>
+                                <a href="home.php?id=<?php echo $moestuin_id - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px]"></i></a>
+                            </div>
+                            <div>
+                                <h1 class="font-bold text-[26px] mb-2 text-center"> <?php echo htmlspecialchars($name) ?> </h1>
+                            </div>
+                            <div>
+                                <a href="home.php?id=<?php echo $moestuin_id + 1 ?>"><i class="fa-solid fa-arrow-right fa-xl ml-[0px]"></i></a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="w-[372px] md:w-[452px] xl:w-[615px] h-[520px] rounded-xl bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;">
+                                <div class="flex-grow-1 ml-[20px] md:ml-[10px] xl:ml-[0px]">
+                                    <div class="flex">
+                                        <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[20px]">Sensoren</h2>
+                                        <a href="editSensors.php?id=<?php echo $moestuin_id ?>">
+                                            <div class="flex relative top-[35px] ml-[8px]">
+                                                <p class="text-[10px] text-white font-semibold relative bottom-2 ml-[4px]">Aanpassen</p>
                                             </div>
                                         </a>
-                                    <?php endforeach; ?>
+                                    </div>
+                                    <div class="flex flex-wrap ml-[24px]">
+                                        <?php foreach ($sensors as $sensor) : ?>
+                                            <div class="mr-[12px]">
+                                                <form action="" method="post">
+                                                    <div class="pt-[8px]">
+                                                        <div class="h-[32px] w-[32px] bg-[#5C7C5B] rounded-md border-2 border-[#496048] flex justify-center items-center">
+                                                            <p class="text-[14px]" style="font-family: Yeseva One;"><?php echo $sensor['short_name'] ?></p>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    <div class="flex">
+                                        <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[24px] ">Planten</h2>
+                                        <a href="editPlants.php?id=<?php echo $moestuin_id ?>&q=">
+                                            <div class="flex relative top-[40px] ml-[8px]">
+                                                <p class="text-[10px] text-white font-semibold relative bottom-2 ml-[4px]">Aanpassen</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="flex flex-wrap ml-[24px] max-h-[260px] overflow-y-auto">
+                                        <?php foreach ($plants as $plant) : ?>
+                                            <a href="todo.php?id=<?php echo $plant['id'] ?>&moestuin_id=<?php echo $moestuin_id ?>">
+                                                <div class="mr-[12px] mb-[3px]">
+                                                    <div class="pt-[8px]">
+                                                        <div class="h-[82px] w-[82px] bg-[#5C7C5B] flex justify-center items-center border-2 rounded-xl border-[#496048]"><img class="w-[55px]" src="uploads/<?php echo $plant['cover_url'] ?>" alt="<?php echo $plant['name'] ?>"></div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
+                                <div class="flex flex-col items-center">
+                                    <a class="text-white font-semibold mt-[12px] mb-[20px] text-[12px]" href="createName.php">MOESTUIN TOEVOEGEN</a>
+                                </div>
+                                </form>
                             </div>
-                            <div class="flex flex-col items-center">
-                                <a class="text-white font-semibold mt-[12px] mb-[20px] text-[12px]" href="createName.php">MOESTUIN TOEVOEGEN</a>
-                            </div>
-                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php endif ?>
-    </div>
-    <?php if (!isset($error)) : ?>
-        <!-- dashboard -->
-        <section class="max-w-[1024px] mx-auto sm:mt-[70px] mt-[32px]">
-            <h1 class="text-center my-[42px] text-[26px] lg:text-[28px] font-semibold">Data</h1>
-            <div class="flex sm:justify-center">
-                <?php foreach ($sensors as $sensor) : ?>
-                    <a href="home.php?id=<?php echo $moestuin_id ?>&sensorID=<?php echo $sensor['name'] ?>">
-                        <?php
-                        if ($sensor['name'] == "Temperatuursensor") {
+            <?php endif ?>
+        </div>
+        <?php if (!isset($error)) : ?>
+            <!-- dashboard -->
+            <section class="max-w-[1024px] mx-auto sm:mt-[70px] mt-[32px] xl:mt-0">
+                <h1 class="text-center my-[42px] text-[26px] xl:text-[28px] font-semibold xl:hidden">Data</h1>
+                <div class="xl:flex gap-3">
+                    <h2 class="text-[22px] xl:text-[26px] text-black ml-5 mt-[16px] sm:text-center mb-5 xl:mb-0"><?php echo $currentSensor ?></h2>
+                    <div class="flex sm:justify-center">
+                        <?php foreach ($sensors as $sensor) : ?>
+                            <a href="home.php?id=<?php echo $moestuin_id ?>&sensorID=<?php echo $sensor['name'] ?>">
+                                <?php
+                                if ($sensor['name'] == "Temperatuursensor") {
+                                    if ($TemperatuursensorStatus === 'bad') {
+                                        $color = '#FF0000';
+                                    } elseif ($TemperatuursensorStatus === 'warning') {
+                                        $color = '#FFB800';
+                                    } else {
+                                        $color = '#A5CF93';
+                                    }
+                                } elseif ($sensor['name'] == "Bodemvochtsensor") {
+                                    if ($BodemvochtsensorStatus === 'bad') {
+                                        $color = '#FF0000';
+                                    } elseif ($BodemvochtsensorStatus === 'warning') {
+                                        $color = '#FFB800';
+                                    } else {
+                                        $color = '#A5CF93';
+                                    }
+                                } elseif ($sensor['name'] == "Lichtsensor") {
+                                    if ($LichtsensorStatus === 'bad') {
+                                        $color = '#FF0000';
+                                    } elseif ($LichtsensorStatus === 'warning') {
+                                        $color = '#FFB800';
+                                    } else {
+                                        $color = '#A5CF93';
+                                    }
+                                }
+                                ?>
+                                <div class="bg-[#E9E9E9] h-[25px] w-[25px] ml-[25px] rounded-sm xl:mt-[24px]" title="<?php echo $sensor['name'] ?>">
+                                    <div class="relative left-[22px] bottom-[3px] h-[8px] w-[8px] bg-[<?php echo $color ?>] rounded flex justify-center"><p class="text-[12px] font-semibold relative right-[12px] top-[5px]"><?php echo $sensor['short_name'] ?></p></div>
+                                </div>
+
+                            </a>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <section class="sm:flex xl:block">
+                    <div class="sm:w-1/2">
+                        <h3 data-update="<?php echo $lastUpdate ?>" data-sensor="<?php echo $sensor_id ?>" data-moestuin="<?php echo $moestuin_id ?>" id="time" class="text-[20px] xl:text-[24px] text-black ml-5 mt-[24px] mb-[16px]">Live data <span class="text-[12px]" style="font-family: Lato;">Laatste update: &nbsp;<?php echo $sensorTime; ?></span></h3>
+                        <?php if ($currentSensor == "Temperatuursensor") {
                             if ($TemperatuursensorStatus === 'bad') {
-                                $color = '#FF0000';
+                                $divColor = '#FF0000';
                             } elseif ($TemperatuursensorStatus === 'warning') {
-                                $color = '#FFB800';
+                                $divColor = '#FFB800';
                             } else {
-                                $color = '#A5CF93';
+                                $divColor = '#A5CF93';
                             }
-                        } elseif ($sensor['name'] == "Bodemvochtsensor") {
+                        } elseif ($currentSensor == "Bodemvochtsensor") {
                             if ($BodemvochtsensorStatus === 'bad') {
-                                $color = '#FF0000';
+                                $divColor = '#FF0000';
                             } elseif ($BodemvochtsensorStatus === 'warning') {
-                                $color = '#FFB800';
+                                $divColor = '#FFB800';
                             } else {
-                                $color = '#A5CF93';
+                                $divColor = '#A5CF93';
                             }
-                        } elseif ($sensor['name'] == "Lichtsensor") {
+                        } elseif ($currentSensor == "Lichtsensor") {
                             if ($LichtsensorStatus === 'bad') {
-                                $color = '#FF0000';
+                                $divColor = '#FF0000';
                             } elseif ($LichtsensorStatus === 'warning') {
-                                $color = '#FFB800';
+                                $divColor = '#FFB800';
                             } else {
-                                $color = '#A5CF93';
+                                $divColor = '#A5CF93';
                             }
                         }
                         ?>
-                        <div class="bg-[#E9E9E9] h-[25px] w-[25px] ml-[25px] rounded-sm" title="<?php echo $sensor['name'] ?>">
-                            <div class="relative left-[22px] bottom-[3px] h-[8px] w-[8px] bg-[<?php echo $color ?>] rounded"></div>
-                        </div>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-
-            <h2 class="text-[22px] lg:text-[26px] text-black ml-5 mt-[16px] sm:text-center"><?php echo $currentSensor ?></h2>
-            <section class="sm:flex">
-                <div class="sm:w-1/2">
-                    <h3 data-update="<?php echo $lastUpdate ?>" data-sensor="<?php echo $sensor_id ?>" data-moestuin="<?php echo $moestuin_id ?>" id="time" class="text-[20px] lg:text-[24px] text-black ml-5 mt-[24px] mb-[16px]">Live data <span class="text-[12px]" style="font-family: Lato;">Laatste update: &nbsp;<?php echo $sensorTime; ?></span></h3>
-                    <?php if ($currentSensor == "Temperatuursensor") {
-                        if ($TemperatuursensorStatus === 'bad') {
-                            $divColor = '#FF0000';
-                        } elseif ($TemperatuursensorStatus === 'warning') {
-                            $divColor = '#FFB800';
+                        <?php if ($currentSensor == "Lichtsensor") {
+                            $height = "h-[110px] ";
+                            $height2 = "h-[80px]";
                         } else {
-                            $divColor = '#A5CF93';
-                        }
-                    } elseif ($currentSensor == "Bodemvochtsensor") {
-                        if ($BodemvochtsensorStatus === 'bad') {
-                            $divColor = '#FF0000';
-                        } elseif ($BodemvochtsensorStatus === 'warning') {
-                            $divColor = '#FFB800';
-                        } else {
-                            $divColor = '#A5CF93';
-                        }
-                    } elseif ($currentSensor == "Lichtsensor") {
-                        if ($LichtsensorStatus === 'bad') {
-                            $divColor = '#FF0000';
-                        } elseif ($LichtsensorStatus === 'warning') {
-                            $divColor = '#FFB800';
-                        } else {
-                            $divColor = '#A5CF93';
-                        }
-                    }
-                    ?>
-                    <?php if ($currentSensor == "Lichtsensor") {
-                        $height = "h-[110px]";
-                    } else {
-                        $height = "h-[230px]";
-                    } ?>
-                    <div class="ml-5 mr-5 h-[100px] sm:<?php echo $height ?> mb-[10px] bg-[<?php echo $divColor ?>] rounded-md flex justify-between items-center max-w-[640px]">
-                        <div class="text-center w-1/2">
-                            <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';">
-                                <?php if ($currentSensor == "Temperatuursensor") {
-                                    echo $tempStatus;
-                                } elseif ($currentSensor == "Bodemvochtsensor") {
-                                    echo $vochtStatus;
-                                } elseif ($currentSensor == "Lichtsensor") {
-                                    echo $lichtStatus;
-                                }
-                                ?></p>
-                        </div>
-                        <div class="text-center w-1/2">
-                            <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';">
-                                <?php if ($currentSensor == "Temperatuursensor") {
-                                    echo $tempData . " °C";
-                                } elseif ($currentSensor == "Bodemvochtsensor") {
-                                    echo $vochtData . "%";
-                                } elseif ($currentSensor == "Lichtsensor") {
-                                    echo $lichtData . "%";
-                                } ?></p>
-                        </div>
-                    </div>
-                    <?php if ($currentSensor == "Lichtsensor") : ?>
-                        <div class="ml-5 mr-5 h-[100px] sm:h-[110px] bg-[<?php echo $divColorLicht ?>] rounded-md flex justify-between items-center max-w-[640px]">
+                            $height = "h-[230px] ";
+                            $height2 = "h-[160px]";
+                        } ?>
+                        <div class="ml-5 mr-5 h-[100px] sm:<?php echo $height ?>xl:<?php echo $height2 ?> mb-[10px] bg-[<?php echo $divColor ?>] rounded-md flex justify-between items-center max-w-[640px] xl:w-[495px]">
                             <div class="text-center w-1/2">
-                                <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';"><?php echo $LichtUrenStatus ?>
+                                <p class="font-bold text-2xl font-serif" style="font-family: 'Yeseva One';">
+                                    <?php if ($currentSensor == "Temperatuursensor") {
+                                        echo $tempStatus;
+                                    } elseif ($currentSensor == "Bodemvochtsensor") {
+                                        echo $vochtStatus;
+                                    } elseif ($currentSensor == "Lichtsensor") {
+                                        echo $lichtStatus;
+                                    }
+                                    ?></p>
                             </div>
                             <div class="text-center w-1/2">
-                                <p class="font-bold text-3xl font-serif" style="font-family: 'Yeseva One';"><?php echo $lichtUren ?> uren licht</p>
+                                <p class="font-bold text-2xl font-serif" style="font-family: 'Yeseva One';">
+                                    <?php if ($currentSensor == "Temperatuursensor") {
+                                        echo $tempData . " °C";
+                                    } elseif ($currentSensor == "Bodemvochtsensor") {
+                                        echo $vochtData . "%";
+                                    } elseif ($currentSensor == "Lichtsensor") {
+                                        echo $lichtData . "%";
+                                    } ?></p>
                             </div>
                         </div>
-                    <?php endif ?>
-                </div>
-                <div class="sm:w-1/2">
-                    <h3 class="text-[20px] lg:text-[24px] text-black p-0 mb-[16px] mt-[36px] sm:mt-[24px] ml-5">Weekoverzicht</h3>
-                    <div class="mx-5 sm:mx-0 h-[350px] w-[460px] sm:max-w-[640px]">
-                        <canvas class="px-5 py-2 rounded-md bg-[#E9E9E9]" id="myChart" data-dates="<?php echo htmlspecialchars(json_encode($dates)) ?>" data-avg="<?php echo htmlspecialchars(json_encode($avg)) ?>" data-sensor="<?php echo $currentSensor ?>"></canvas>
+                        <?php if ($currentSensor == "Lichtsensor") : ?>
+                            <div class="ml-5 mr-5 h-[100px] sm:<?php echo $height ?>xl:<?php echo $height2 ?> bg-[<?php echo $divColorLicht ?>] rounded-md flex justify-between items-center max-w-[640px] xl:w-[495px]">
+                                <div class="text-center w-1/2">
+                                    <p class="font-bold text-2xl font-serif" style="font-family: 'Yeseva One';"><?php echo $LichtUrenStatus ?>
+                                </div>
+                                <div class="text-center w-1/2">
+                                    <p class="font-bold text-2xl font-serif" style="font-family: 'Yeseva One';"><?php echo $lichtUren ?> uren licht</p>
+                                </div>
+                            </div>
+                        <?php endif ?>
                     </div>
-                </div>
+                    <div class="sm:w-1/2">
+                        <h3 class="text-[20px] xl:text-[24px] text-black p-0 mb-[16px] mt-[36px] sm:mt-[24px] ml-5">Weekoverzicht</h3>
+                        <div class="mx-5 sm:mx-0 h-[350px] w-[460px] sm:max-w-[640px] xl:w-[550px] xl:h-[250px] xl:ml-[16px]">
+                            <canvas class="px-5 py-2 rounded-md bg-[#E9E9E9]" id="myChart" data-dates="<?php echo htmlspecialchars(json_encode($dates)) ?>" data-avg="<?php echo htmlspecialchars(json_encode($avg)) ?>" data-sensor="<?php echo $currentSensor ?>"></canvas>
+                        </div>
+                    </div>
+                </section>
             </section>
-        </section>
-    <?php endif ?>
+        <?php endif ?>
+    </div>
     <script>
         const ctx = document.getElementById('myChart');
         // get data from canvas
