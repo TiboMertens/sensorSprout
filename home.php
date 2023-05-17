@@ -76,7 +76,7 @@ try {
                 }
             }
             $lichtUren = $count;
-            if ($lichtUren > $minHours) {
+            if ($lichtUren >= $minHours) {
                 $LichtUrenStatus = 'Goed!';
                 $divColorLicht = '#A5CF93';
             } else {
@@ -245,6 +245,29 @@ try {
         top: 10px;
         right: 6px;
     }
+
+    @keyframes rotation {
+        from {
+            transform-origin: center;
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform-origin: center;
+            transform: rotate(360deg);
+        }
+    }
+
+    .rotate {
+        animation: rotation 1s infinite linear;
+        transform-origin: 50% 50%; /* Adjust the values as needed */
+    }
+
+    .rotatepos {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
 </style>
 
 <body class="bg-[#F7F7F7]">
@@ -253,7 +276,7 @@ try {
         <div>
             <form method="post">
                 <div class="flex">
-                    <button type="submit" name="refresh" class="px-5 py-2 bg-[#F59B1A] rounded-full text-white font-bold"><i class="fa-solid fa-arrows-rotate mr-2"></i>Refresh for new data<button>
+                    <button type="submit" name="refresh" class="px-5 py-2 bg-[#F59B1A] rounded-full text-white font-bold" onclick="rotateIcon()"><i id="my_icon" class="fa-solid fa-arrows-rotate mr-2"></i>Refresh for new data<button>
                 </div>
             </form>
         </div>
@@ -370,7 +393,9 @@ try {
                                 }
                                 ?>
                                 <div class="bg-[#E9E9E9] h-[25px] w-[25px] ml-[25px] rounded-sm xl:mt-[24px]" title="<?php echo $sensor['name'] ?>">
-                                    <div class="relative left-[22px] bottom-[3px] h-[8px] w-[8px] bg-[<?php echo $color ?>] rounded flex justify-center"><p class="text-[12px] font-semibold relative right-[12px] top-[5px]"><?php echo $sensor['short_name'] ?></p></div>
+                                    <div class="relative left-[22px] bottom-[3px] h-[8px] w-[8px] bg-[<?php echo $color ?>] rounded flex justify-center">
+                                        <p class="text-[12px] font-semibold relative right-[12px] top-[5px]"><?php echo $sensor['short_name'] ?></p>
+                                    </div>
                                 </div>
 
                             </a>
@@ -558,6 +583,8 @@ try {
         const time = document.querySelector('#time');
         //select the element with id refresh
         const refresh = document.querySelector('#refresh');
+        //select the element with id my_icon
+        const icon = document.querySelector('#my_icon');
 
         //every 5 seconds, call an anonymous function
         setInterval(function() {
@@ -587,6 +614,16 @@ try {
                     }
                 });
         }, 5000);
+
+        function rotateIcon() {
+            var icon = document.getElementById('my_icon');
+            icon.classList.add('rotate');
+            icon.classList.add('rotatepos');
+            setTimeout(function() {
+                icon.classList.remove('rotate');
+                icon.classList.remove('rotatepos');
+            }, 2000); // Adjust the duration of rotation as needed (in milliseconds)
+        }
     </script>
     <script src="js/hamburger.js"></script>
 </body>
