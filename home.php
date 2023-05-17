@@ -249,7 +249,7 @@ try {
 
 <body class="bg-[#F5F3F3]">
     <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
-    <section id="refresh" class="hidden fixed top-0 w-full flex justify-center mt-[86px]">
+    <section id="refresh" class="hidden fixed top-0 w-full justify-center mt-[86px]">
         <div>
             <form method="post">
                 <div class="flex">
@@ -577,6 +577,7 @@ try {
                     console.log(json);
                     if (json.status == 'update') {
                         refresh.classList.remove('hidden');
+                        refresh.classList.add('flex');
                     }
                 });
         }, 5000);
