@@ -14,7 +14,7 @@ try {
                     $password = $_POST['password'];
                     $user->setPassword($password);
                     $user->updatePassword();
-                    header("Location: login.php");
+                    header("Location: index.php");
                 } catch (Throwable $e) {
                     $error = $e->getMessage();
                 }
@@ -71,7 +71,7 @@ try {
     <main class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px]" style="height: 65%">
         <form action="" method="post">
             <div class="pt-5">
-                <a href="login.php"><i class="fa-solid fa-arrow-left fa-lg" style="color: #ffffff;"></i></a>
+                <a href="index.php"><i class="fa-solid fa-arrow-left fa-lg" style="color: #ffffff;"></i></a>
             </div>
             <h1 class="text-[26px] text-white pt-[44px]">Wachtwoord herstellen</h1>
             <div class="text-white text-[20px]">

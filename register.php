@@ -103,7 +103,7 @@ try {
                         <input type="submit" value="REGISTREER" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px]">
                     </div>
                     <div class="flex justify-center items-center text-xs mt-[32px] pb-10">
-                        <p class="text-center">Heeft u al een account? </br><a href="login.php"><span class="underline font-bold hover:text-white">Log in</span></a></p>
+                        <p class="text-center">Heeft u al een account? </br><a href="index.php"><span class="underline font-bold hover:text-white">Log in</span></a></p>
                     </div>
                 </form>
             </main>

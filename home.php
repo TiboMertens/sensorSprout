@@ -211,7 +211,7 @@ try {
             }
         }
     } else {
-        header('Location: login.php');
+        header('Location: index.php');
     }
 } catch (\Throwable $th) {
     $error = $th->getMessage();

@@ -115,7 +115,7 @@ if (isset($_SESSION['loggedin'])) {
         header('Location: home.php');
     }
 } else {
-    header('Location: login.php');
+    header('Location: index.php');
 }
 ?>
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 <?php
 include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 if (!isset($_SESSION['loggedin'])) {
-    header('Location: login.php');
+    header('Location: index.php');
     exit;
 }
 ?>

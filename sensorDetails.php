@@ -24,7 +24,7 @@ if (isset($_SESSION['loggedin'])) {
         $error = $th->getMessage();
     }
 } else {
-    header('Location: login.php');
+    header('Location: index.php');
     exit;
 }
 ?>
