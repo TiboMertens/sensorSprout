@@ -2,6 +2,9 @@
 include_once(__DIR__ . DIRECTORY_SEPARATOR . "bootstrap.php");
 try {
     if (isset($_SESSION['loggedin'])) {
+        if (isset($_POST['refresh'])) {
+            header("Location: " . $_SERVER['REQUEST_URI']);
+        }
         $user_id = $_SESSION['id']['id'];
         $moestuin_id = $_GET['id'] ?? null;
 
@@ -246,6 +249,15 @@ try {
 
 <body class="bg-[#F5F3F3]">
     <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
+    <section id="refresh" class="hidden fixed top-0 w-full flex justify-center mt-[86px]">
+        <div>
+            <form method="post">
+                <div class="flex">
+                    <button type="submit" name="refresh" class="px-5 py-2 bg-[#F59B1A] rounded-full text-white font-bold"><i class="fa-solid fa-arrows-rotate mr-2"></i>Refresh for new data<button>
+                </div>
+            </form>
+        </div>
+    </section>
     <div id="container" class="bg-[#F5F3F3] flex justify-center items-center mt-[32px]">
         <?php if (isset($error)) : ?>
             <div class="error text-center">
@@ -538,14 +550,17 @@ try {
     <script>
         // select the element with the id time 
         const time = document.querySelector('#time');
+        //select the element with id refresh
+        const refresh = document.querySelector('#refresh');
 
         //every 5 seconds, call an anonymous function
         setInterval(function() {
             const update = time.getAttribute('data-update');
-            const moestuin_id = time.getAttribute('data-moestuin_id');
-            const sensor_id = time.getAttribute('data-sensor_id');
-            // get the state of the follow button
+            const moestuin_id = time.getAttribute('data-moestuin');
+            const sensor_id = time.getAttribute('data-sensor');
             console.log(update);
+            console.log(moestuin_id);
+            console.log(sensor_id);
 
             let formData = new FormData();
             formData.append("time", update);
@@ -560,7 +575,9 @@ try {
                 })
                 .then(function(json) {
                     console.log(json);
-
+                    if (json.status == 'update') {
+                        refresh.classList.remove('hidden');
+                    }
                 });
         }, 5000);
     </script>
