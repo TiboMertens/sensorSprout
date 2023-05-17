@@ -7,6 +7,7 @@ if (isset($_SESSION['loggedin'])) {
     $user = new User();
     $user->setId($user_id);
     $sensors = $user->getSensors();
+    $empty = false;
 
     // initialize the selected sensors array if it doesn't exist in the session
     if (!isset($_SESSION['selectedSensors'])) {
@@ -47,7 +48,7 @@ if (isset($_SESSION['loggedin'])) {
         $border = '#496149';
     }
 } else {
-    header('Location: login.php');
+    header('Location: index.php');
     exit;
 }
 
@@ -74,7 +75,7 @@ if (isset($_SESSION['loggedin'])) {
     <div id="container" class="mt-[32px]" style="height: 100%">
         <div id="container2" class="">
             <div>
-                <h1 class="font-regular text-[26px] mb-2"><?php echo htmlspecialchars($name) ?></h1>
+                <h1 class="font-regular text-[26px] mb-2 mt-[100px]"><?php echo htmlspecialchars($name) ?></h1>
                 <div>
                     <div class="w-[372px] md:w-[452px] lg:w-[822px] h-[520px] bg-[#739B72] flex flex-col justify-between border-[8px] rounded-lg border-dashed" style="border-color: <?php echo $border ?>;">
                         <div class="flex-grow-1 max-h-[400px] overflow-y-auto ml-[18px] md:ml-[18px] lg:ml-[8px]">
@@ -131,7 +132,7 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                         </a>
                     </div>
-                    <form action="" method="post">
+                    <form action="" method="post" class="pt-[300px]">
                         <input type="submit" value="KOOP SENSOR" name="koop" id="koop" class="h-[48px] bg-[#81CCDE] w-full rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] mb-[32px] mt-[24px]">
                     </form>
                 </section>

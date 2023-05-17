@@ -28,7 +28,6 @@ if (isset($_SESSION['loggedin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creëer je moestuin</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/create.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/c2626c7e45.js" crossorigin="anonymous"></script>
     <script src="js/create.js" defer></script>
