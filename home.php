@@ -281,7 +281,7 @@ try {
             </form>
         </div>
     </section>
-    <div class="xl:flex">
+    <div class="xl:flex xl:justify-center">
         <div id="container" class="bg-[#23232] flex justify-center items-center mt-[32px] xl:mt-[4px] xl:w-1/2">
             <?php if (isset($error)) : ?>
                 <div class="error text-center">
@@ -291,7 +291,7 @@ try {
             <?php else : ?>
                 <div class="p xl:h-[610px]">
                     <div>
-                        <div class="flex w-[372px] md:w-[452px] xl:w-[615px] justify-between items-center mb-[12px] xl:mb-[32px] xl:mt-[12px]">
+                        <div class="flex w-[372px] md:w-[452px] xl:w-[580px] justify-between items-center mb-[12px] xl:mb-[32px] xl:mt-[12px]">
                             <div>
                                 <a href="home.php?id=<?php echo $moestuin_id - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px]"></i></a>
                             </div>
@@ -303,8 +303,8 @@ try {
                             </div>
                         </div>
                         <div>
-                            <div class="w-[372px] md:w-[452px] xl:w-[615px] h-[520px] rounded-xl bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;">
-                                <div class="flex-grow-1 ml-[20px] md:ml-[10px] xl:ml-[0px]">
+                            <div class="w-[372px] md:w-[452px] xl:w-[580px] h-[520px] rounded-xl bg-[#739B72] flex flex-col justify-between border-[8px] border-dashed" style="border-color: <?php echo $border ?>;">
+                                <div class="flex-grow-1 ml-[20px] md:ml-[10px] xl:ml-[30px]">
                                     <div class="flex">
                                         <h2 class="font-regular text-[18px] text-white ml-[24px] mt-[20px]">Sensoren</h2>
                                         <a href="editSensors.php?id=<?php echo $moestuin_id ?>">
@@ -358,7 +358,7 @@ try {
         </div>
         <?php if (!isset($error)) : ?>
             <!-- dashboard -->
-            <section class="max-w-[1024px] mx-auto sm:mt-[70px] mt-[32px] xl:mt-0">
+            <section class="max-w-[1024px] sm:mt-[70px] mt-[32px] xl:mt-0">
                 <h1 class="text-center my-[42px] text-[26px] xl:text-[28px] font-semibold xl:hidden">Data</h1>
                 <div class="xl:flex gap-3">
                     <h2 class="text-[22px] xl:text-[26px] text-black ml-5 mt-[16px] sm:text-center mb-5 xl:mb-0"><?php echo $currentSensor ?></h2>

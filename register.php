@@ -74,9 +74,6 @@ try {
 <body class="bg-[#F5F3F3]" style="height: 100%;">
     <div class="absolute inset-0 flex items-center justify-center">
         <div class="max-w-[500px]">
-            <section class="flex justify-center items-center" style="height:30%">
-                <p>LOGO</p>
-            </section>
             <main class="bg-[#A5CF93] rounded-[5px] pl-[24px] pr-[24px]" style="height: 70%">
                 <form action="" method="post">
                     <h1 class="text-[26px] text-white pt-[44px]">Registreer u</h1>
