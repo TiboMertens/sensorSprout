@@ -488,7 +488,7 @@ try {
         const dates = JSON.parse(ctx.dataset.dates);
         const avg = JSON.parse(ctx.dataset.avg);
         const sensor = ctx.dataset.sensor;
-        console.log(sensor);
+        (sensor);
 
         let dataToday = '';
         let dataYesterday = '';
@@ -506,8 +506,6 @@ try {
             let dataFourDaysAgo = avg[4]['AVG(data)'];
             let dataFiveDaysAgo = avg[5]['AVG(data)'];
             let dataSixDaysAgo = avg[6]['AVG(data)'];
-
-            console.log(dataToday, dataYesterday, dataTwoDaysAgo, dataThreeDaysAgo, dataFourDaysAgo, dataFiveDaysAgo, dataSixDaysAgo);
 
             new Chart(ctx, {
                 type: 'line',
@@ -545,8 +543,6 @@ try {
             let dataFourDaysAgo = avg[4];
             let dataFiveDaysAgo = avg[5];
             let dataSixDaysAgo = avg[6];
-
-            console.log(dataToday, dataYesterday, dataTwoDaysAgo, dataThreeDaysAgo, dataFourDaysAgo, dataFiveDaysAgo, dataSixDaysAgo);
 
             new Chart(ctx, {
                 type: 'line',
@@ -591,9 +587,6 @@ try {
             const update = time.getAttribute('data-update');
             const moestuin_id = time.getAttribute('data-moestuin');
             const sensor_id = time.getAttribute('data-sensor');
-            console.log(update);
-            console.log(moestuin_id);
-            console.log(sensor_id);
 
             let formData = new FormData();
             formData.append("time", update);
@@ -607,7 +600,6 @@ try {
                     return response.json();
                 })
                 .then(function(json) {
-                    console.log(json);
                     if (json.status == 'update') {
                         refresh.classList.remove('hidden');
                         refresh.classList.add('flex');

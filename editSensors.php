@@ -22,7 +22,6 @@ if (isset($_SESSION['loggedin'])) {
         unset($sensors[$key]);
         //delete the sensor from the database
         $moestuin = new Moestuin();
-        var_dump($moestuin->deleteSensor($_POST['deleteSensor'], $moestuin_id));
     }
 
     $newSensors = array();
@@ -195,20 +194,17 @@ if (isset($_SESSION['loggedin'])) {
         });
 
         closeButton.addEventListener("click", () => {
-            console.log("clicked");
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         });
 
         closeButton2.addEventListener("click", () => {
-            console.log("clicked");
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         });
 
         //get the form state
         const formState = form.getAttribute("data-id");
-        console.log(formState);
 
         if (formState == "search") {
             const hiddenSection = document.querySelector("#add-section");

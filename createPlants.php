@@ -199,13 +199,11 @@ if (isset($_SESSION['loggedin'])) {
         });
 
         closeButton.addEventListener("click", () => {
-            console.log("clicked");
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         });
 
         closeButton2.addEventListener("click", () => {
-            console.log("clicked");
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         });

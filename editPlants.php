@@ -194,20 +194,17 @@ if (isset($_SESSION['loggedin'])) {
         });
 
         closeButton.addEventListener("click", () => {
-            console.log("clicked");
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         });
 
         closeButton2.addEventListener("click", () => {
-            console.log("clicked");
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         });
 
         //get the form state
         const formState = form.getAttribute("data-id");
-        console.log(formState);
 
         if (formState == "search") {
             const hiddenSection = document.querySelector("#add-section");
