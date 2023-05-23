@@ -258,7 +258,7 @@ try {
         }
     }
 
-    .rotate {
+    .rotateIcon {
         animation: rotation 1s infinite linear;
         transform-origin: 50% 50%; /* Adjust the values as needed */
     }
@@ -296,7 +296,7 @@ try {
                                 <a href="home.php?id=<?php echo $moestuin_id - 1 ?>"><i class="fa-solid fa-arrow-left fa-xl mr-[8px]"></i></a>
                             </div>
                             <div>
-                                <h1 class="font-bold text-[26px] mb-2 text-center"> <?php echo htmlspecialchars($name) ?> </h1>
+                                <h1 class="font-bold text-[26px] mb-2 text-center"><?php echo htmlspecialchars($name) ?></h1>
                             </div>
                             <div>
                                 <a href="home.php?id=<?php echo $moestuin_id + 1 ?>"><i class="fa-solid fa-arrow-right fa-xl ml-[0px]"></i></a>
@@ -617,10 +617,10 @@ try {
 
         function rotateIcon() {
             var icon = document.getElementById('my_icon');
-            icon.classList.add('rotate');
+            icon.classList.add('rotateIcon');
             icon.classList.add('rotatepos');
             setTimeout(function() {
-                icon.classList.remove('rotate');
+                icon.classList.remove('rotateIcon');
                 icon.classList.remove('rotatepos');
             }, 2000); // Adjust the duration of rotation as needed (in milliseconds)
         }
