@@ -12,8 +12,9 @@
   
     // extract the temperature value from the decoded_payload data
     $temperature = $data->uplink_message->decoded_payload->temperature;
+    $ldr = $data->uplink_message->decoded_payload->ldr;
 
-    Sensor::saveReading($temperature);
+    Sensor::saveReading($temperature, $ldr);
 
     //write the temperature value to a file
     $file = 'webhook_data.txt';
