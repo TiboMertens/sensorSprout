@@ -169,7 +169,7 @@ try {
             $sensorTime = $timeArray[1];
             $chartID = 1;
         } elseif ($currentSensor == 'Lichtsensor') {
-            $sensorTime = $timeArray[2];
+            $sensorTime = $timeArray[0];
             $chartID = 3;
         }
 
