@@ -40,6 +40,6 @@ Contributions to this repository are not allowed at the moment.
 
 ## Contact
 
-For any inquiries or questions, you can reach out to me us via email.
+For any inquiries or questions, you can reach out to us via email.
 Lead developer: <tibomertens25@gmail.com>.
 Lead designer/branding: <quintt.adam@hotmail.com>
