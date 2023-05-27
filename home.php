@@ -329,7 +329,7 @@ try {
                 </div>
                 <a href="#data" class="xl:hidden">
                     <div class="fixed bottom-7 right-3 w-10 h-10 bg-[#F59B1A] rounded-full flex justify-center items-center xl:hidden">
-                        <i class="fa-solid fa-arrow-down xl:hidden"></i>
+                        <i class="fa-solid fa-arrow-down text-[#ffffff] xl:hidden"></i>
                     </div>
                 </a>
             <?php endif ?>
