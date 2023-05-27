@@ -260,7 +260,8 @@ try {
 
     .rotateIcon {
         animation: rotation 1s infinite linear;
-        transform-origin: 50% 50%; /* Adjust the values as needed */
+        transform-origin: 50% 50%;
+        /* Adjust the values as needed */
     }
 
     .rotatepos {
@@ -354,12 +355,17 @@ try {
                         </div>
                     </div>
                 </div>
+                <a href="#data">
+                    <div class="fixed bottom-7 right-3 w-10 h-10 bg-[#F59B1A] rounded-full flex justify-center items-center">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+                </a>
             <?php endif ?>
         </div>
         <?php if (!isset($error)) : ?>
             <!-- dashboard -->
             <section class="max-w-[1024px] sm:mt-[70px] mt-[32px] xl:mt-0">
-                <h1 class="text-center my-[42px] text-[26px] xl:text-[28px] font-semibold xl:hidden">Data</h1>
+                <h2 id="data" class="text-center my-[42px] text-[26px] xl:text-[28px] font-semibold xl:hidden">Data</h2>
                 <div class="xl:flex gap-3">
                     <h2 class="text-[22px] xl:text-[26px] text-black ml-5 mt-[16px] sm:text-center mb-5 xl:mb-0"><?php echo $currentSensor ?></h2>
                     <div class="flex sm:justify-center">
