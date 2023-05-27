@@ -152,7 +152,7 @@ if (isset($_SESSION['loggedin'])) {
     <section class="flex justify-center items-center" style="height: 100%;">
         <section id="add-section" class="hidden z-30 w-[372px] md:w-[452px] lg:w-[822px]" style="height: 100%;">
             <section class="flex justify-center items-center" style="height: 30%;" id="close"></section>
-            <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px] overflow-y-auto" style="height: 70%">
+            <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px] overflow-y-auto" style="height: 60%">
                 <i class="fa-solid fa-arrow-left fa-lg pt-[32px] cursor-pointer" style="color: #ffffff;" id="close2"></i>
                 <form action="" method="get" id="search-form" data-id="<?php echo $state ?>">
                     <input type="hidden" name="id" value="<?php echo $moestuin_id ?>">
@@ -207,11 +207,6 @@ if (isset($_SESSION['loggedin'])) {
         const formState = form.getAttribute("data-id");
 
         if (formState == "search") {
-            const hiddenSection = document.querySelector("#add-section");
-            hiddenSection.classList.toggle("hidden");
-        }
-
-        if (state == "clicked") {
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
         }

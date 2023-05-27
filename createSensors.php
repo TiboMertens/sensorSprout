@@ -108,8 +108,8 @@ if (isset($_SESSION['loggedin'])) {
         </div>
         <section class="flex justify-center items-center" style="height: 100%;">
             <section id="add-section" class="hidden z-30 w-[372px] md:w-[452px] lg:w-[822px]" style="height: 100%;">
-                <section class="flex justify-center items-center" style="height: 20%;" id="close"></section>
-                <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px]" style="height: 80%">
+                <section class="flex justify-center items-center" style="height: 80%;" id="close"></section>
+                <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px]" style="height: 20%">
                     <i class="fa-solid fa-arrow-left fa-lg pt-[32px] cursor-pointer" style="color: #ffffff;" id="close2"></i>
                     <h3 class="font-bold text-[24px] text-white pt-[8px]">Jouw sensoren</h3>
                     <div class="flex flex-wrap">
@@ -126,7 +126,7 @@ if (isset($_SESSION['loggedin'])) {
                                 </form>
                             </div>
                         <?php endforeach ?>
-                        <a href="winkel.php" class="mr-[12px] mb-[24px] mt-[24px]">
+                        <a href="shop.php" class="mr-[12px] mb-[24px] mt-[24px]">
                             <div class="pt-[8px]">
                                 <div class="h-[82px] w-[82px] bg-white flex justify-center border-2 rounded-lg border-[#496048] items-center cursor-pointer" id="add"><i class="fa-solid fa-plus fa-xl" style="color: #000000;"></i></div>
                             </div>
@@ -152,6 +152,7 @@ if (isset($_SESSION['loggedin'])) {
         </div>
         <?php endif ?>
     </div>
+    <script src="js/hamburger.js"></script>
     <script>
         //get element w id addProduct
         const addButton = document.getElementById("addProduct");
@@ -171,19 +172,6 @@ if (isset($_SESSION['loggedin'])) {
         closeButton2.addEventListener("click", () => {
             const hiddenSection = document.querySelector("#add-section");
             hiddenSection.classList.toggle("hidden");
-        });
-
-        // get the hamburger id
-        const hamburger = document.getElementById("hamburger");
-        //get the menu id
-        const menu = document.getElementById("menu");
-
-        //add event listener to the hamburger
-        hamburger.addEventListener("click", () => {
-            //toggle the active class to the menu
-            //rotate the hamburger 90 degrees
-            hamburger.classList.toggle("rotate");
-            menu.classList.toggle("hidden");
         });
     </script>
 </body>
