@@ -92,6 +92,7 @@ if (isset($_SESSION['loggedin'])) {
     <script src="js/overlay.js" defer></script>
     <link rel="stylesheet" href="css/create.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hamburger.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">

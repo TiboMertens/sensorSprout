@@ -29,6 +29,7 @@ if (isset($_SESSION['loggedin'])) {
     <title>Creëer je moestuin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hamburger.css">
     <script src="https://kit.fontawesome.com/c2626c7e45.js" crossorigin="anonymous"></script>
     <script src="js/create.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
