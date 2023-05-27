@@ -239,36 +239,7 @@ try {
 </head>
 
 <style>
-    .rotate {
-        transform: rotate(90deg);
-        position: relative;
-        top: 10px;
-        right: 6px;
-    }
-
-    @keyframes rotation {
-        from {
-            transform-origin: center;
-            transform: rotate(0deg);
-        }
-
-        to {
-            transform-origin: center;
-            transform: rotate(360deg);
-        }
-    }
-
-    .rotateIcon {
-        animation: rotation 1s infinite linear;
-        transform-origin: 50% 50%;
-        /* Adjust the values as needed */
-    }
-
-    .rotatepos {
-        position: relative;
-        top: 0;
-        left: 0;
-    }
+    
 </style>
 
 <body class="bg-[#F7F7F7]">

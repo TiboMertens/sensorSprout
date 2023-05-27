@@ -64,6 +64,7 @@ if (isset($_SESSION['loggedin'])) {
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/create.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/hamburger.css">
     <script src="https://kit.fontawesome.com/c2626c7e45.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,27 +154,7 @@ if (isset($_SESSION['loggedin'])) {
         <?php endif ?>
     </div>
     <script src="js/hamburger.js"></script>
-    <script>
-        //get element w id addProduct
-        const addButton = document.getElementById("addProduct");
-        const closeButton = document.getElementById("close");
-        const closeButton2 = document.getElementById("close2");
-
-        addButton.addEventListener("click", () => {
-            const hiddenSection = document.querySelector("#add-section");
-            hiddenSection.classList.toggle("hidden");
-        });
-
-        closeButton.addEventListener("click", () => {
-            const hiddenSection = document.querySelector("#add-section");
-            hiddenSection.classList.toggle("hidden");
-        });
-
-        closeButton2.addEventListener("click", () => {
-            const hiddenSection = document.querySelector("#add-section");
-            hiddenSection.classList.toggle("hidden");
-        });
-    </script>
+    <script src="js/createSensors.js"></script>
 </body>
 
 </html>
