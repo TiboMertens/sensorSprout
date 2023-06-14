@@ -7,7 +7,6 @@ try {
         }
         $user_id = $_SESSION['id']['id'];
         $moestuin_id = $_GET['id'] ?? null;
-        var_dump($moestuin_id);
 
         if ($moestuin_id == null) {
             $moestuin_id = Moestuin::getMoestuinId($user_id);
