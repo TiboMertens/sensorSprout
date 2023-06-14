@@ -91,7 +91,7 @@ if (isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-[#F5F3F3]">
+<body class="bg-[#F5F3F3]" style="height: 100vh;">
     <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
     <div id="container" class="mt-[32px]" style="height: 100%">
         <div id="container2" class="flex justify-center items-center">
@@ -149,7 +149,7 @@ if (isset($_SESSION['loggedin'])) {
         <section class="flex justify-center items-center" style="height: 100%;">
             <section id="add-section" class="hidden z-30 w-[372px] md:w-[452px] lg:w-8522px]" style="height: 100%;">
                 <section class="flex justify-center items-center" style="height: 20%;" id="close"></section>
-                <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px]" style="height: 60%">
+                <section class="bg-[#A5CF93] rounded-t-[30px] pl-[24px] pr-[24px]" style="height: 80%">
                     <i class="fa-solid fa-arrow-left fa-lg pt-[32px] cursor-pointer" style="color: #ffffff;" id="close2"></i>
                     <h3 class="font-bold text-[24px] text-white pt-[8px]">Jouw sensoren</h3>
                     <div class="flex flex-wrap">
@@ -166,7 +166,7 @@ if (isset($_SESSION['loggedin'])) {
                                 </form>
                             </div>
                         <?php endforeach ?>
-                        <a href="winkel.php" class="mr-[12px] mb-[24px] mt-[24px]">
+                        <a href="shop.php" class="mr-[12px] mb-[24px] mt-[24px]">
                             <div class="pt-[8px]">
                                 <div class="h-[82px] w-[82px] bg-white flex justify-center border-2 rounded-lg border-[#496048] items-center cursor-pointer" id="add"><i class="fa-solid fa-plus fa-xl" style="color: #000000;"></i></div>
                             </div>

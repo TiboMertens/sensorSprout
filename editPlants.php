@@ -98,7 +98,7 @@ if (isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Yeseva+One&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-[#F5F3F3]">
+<body class="bg-[#F5F3F3]" style="height: 100vh;">
     <div class="mb-[32px]">
         <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
     </div>
