@@ -94,7 +94,7 @@ if (isset($_SESSION['loggedin'])) {
 <body class="bg-[#F5F3F3]">
     <?php include_once(__DIR__ . "/inc/nav.inc.php"); ?>
     <div id="container" class="mt-[32px]" style="height: 100%">
-        <div id="container2">
+        <div id="container2" class="flex justify-center items-center">
             <div>
                 <h1 class="font-regular text-[26px] mb-2 text-center"> <?php echo htmlspecialchars($name) ?> </h1>
                 <div>
