@@ -7,6 +7,7 @@ try {
         }
         $user_id = $_SESSION['id']['id'];
         $moestuin_id = $_GET['id'] ?? null;
+        var_dump($moestuin_id);
 
         if ($moestuin_id == null) {
             $moestuin_id = Moestuin::getMoestuinId($user_id);
@@ -185,7 +186,7 @@ try {
                 // Get the average for the current date
                 $dateAvg = date('Y-m-d', strtotime("-$i days"));
 
-                $average = Moestuin::getAvg($dateAvg, $chartID);
+                $average = Moestuin::getAvg($dateAvg, $chartID, $moestuin_id);
 
                 // Push the date and average into the arrays
                 array_push($dates, $date);
