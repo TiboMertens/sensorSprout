@@ -8,7 +8,7 @@
             <a href="#" class="mr-7 text-[20px]" style="font-family: Lato;">Klimaat</a>
             <a href="shop.php" class="mr-7 text-[20px]" style="font-family: Lato;">Winkel</a>
             <a href="ToDo.php" class="mr-7 text-[20px]" style="font-family: Lato;">ToDo</a>
-            <a href="#" class="text-[20px]" style="font-family: Lato;">Instellingen</a>
+            <a href="logout.php" class="text-[20px]" style="font-family: Lato;">Instellingen</a>
         </div>
         <div class="md:hidden block" id="hamburger">
             <button type="button" class="text-[20px] font-bold text-[#262626] focus:outline-none mr-5">
