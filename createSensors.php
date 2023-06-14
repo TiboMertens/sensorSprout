@@ -100,7 +100,7 @@ if (isset($_SESSION['loggedin'])) {
                             </div>
                         </div>
                         <form action="" method="post" class="flex flex-col items-center">
-                            <input type="submit" value="VOLGENDE" name="volgende" id="name" class="h-[48px] text-center bg-[#81CCDE] my-[20px] w-[270px] md:w-[365px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] pt-[4px]">
+                            <input type="submit" value="VOLGENDE" name="volgende" id="name" class="h-[48px] text-center cursor-pointer bg-[#81CCDE] my-[20px] w-[270px] md:w-[365px] lg:w-[458px] rounded-[5px] hover:bg-[#5EBCD4] font-bold text-[18px] text-white tracking-[2px] pt-[4px]">
                         </form>
                     </div>
                     <p class="font-regular text-[16px] flex justify-center mt-2">3 van 4</p>
